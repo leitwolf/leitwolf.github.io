@@ -1,0 +1,14 @@
+# Site settings
+title: lonewolf的博客
+email: wolf.pan@qq.com
+description: "一个攻城狮的技术博客"
+author: lonewolf
+baseurl: "" 
+url: "http://leitwolf.github.io"
+
+# Build settings
+markdown: redcarpet
+highlighter: pygments
+
+redcarpet:
+  extensions: ["fenced_code_blocks", "autolink", "tables", "highlight", "strikethrough"]
