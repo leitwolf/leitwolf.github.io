@@ -14,9 +14,8 @@ if ($(window).width() <= 1280) {
     tag1       = $('.pl__all'),
     tag2       = $('.python'),
     tag3       = $('.html5'),
-    tag4       = $('.golang');
-    // tag5       = $('.place_your_tag_name_here'),
-    // tag6       = $('.place_your_tag_name_here');
+    tag4       = $('.golang'),
+    tag5       = $('.随笔');
 var sidebar    = $('#sidebar'),
     container  = $('#post'),
     content    = $('#pjax'),
@@ -30,7 +29,7 @@ var clickHandler = function(k) {
     window['tag'+k].delay(50).fadeIn(350);
   }
 };
-for (var i = 1; i <= 4; i++) {
+for (var i = 1; i <= 5; i++) {
   $('#js-label' + i).on('click', clickHandler(i));
   // 添加类别下文章数量
   $('#js-label' + i).find('.post_count').text(window['tag'+i].length);
