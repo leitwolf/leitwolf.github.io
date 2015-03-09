@@ -4,7 +4,7 @@ email: wolf.pan@qq.com
 description: "一个攻城狮的技术博客"
 author: lonewolf
 baseurl: "" 
-url: "http://leitwolf.github.io"
+url: "http://lonewolf.name"
 
 # Build settings
 markdown: redcarpet
