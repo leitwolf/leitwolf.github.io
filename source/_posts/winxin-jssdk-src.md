@@ -1,7 +1,9 @@
 ---
 title: 微信JSSDK接入问题记录及源码
 date: 2015/02/08 10:00:00
-tags: html5
+tags: 
+- 微信
+- JSSDK
 ---
 
 今天把一个html5游戏的微信分享功能从第三方库切换到官方库了，[官方微信JSSDK](http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html)。
