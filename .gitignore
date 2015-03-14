@@ -2,7 +2,7 @@
 Thumbs.db
 db.json
 *.log
+.deploy*/
 node_modules/
 package.json
 _config.yml
-.deploy*/
