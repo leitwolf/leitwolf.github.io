@@ -20,9 +20,9 @@
 
 
 
-	<meta name="keywords" content="QuickXDev," />
+	<meta name="keywords" content="刷机,荣耀3C," />
 
-  <title> QuickXDev更新到3.3 // lonewolf的博客 </title>
+  <title> 荣耀3C变砖记 // lonewolf的博客 </title>
 </head>
 
 <body>
@@ -93,7 +93,7 @@
           
           
             
-              QuickXDev更新到3.3
+              荣耀3C变砖记
             
           
         </h1>
@@ -102,15 +102,15 @@
       <div class="post-meta">
           <span class="post-time">
             
-              发表于 2015-03-09
+              发表于 2015-03-17
             
           </span>
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/blog/2015/03/09/QuickXDev-ver3.3/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/09/QuickXDev-ver3.3/"></span>
+            <a href="/blog/2015/03/17/honor3c-error/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/17/honor3c-error/"></span>
             </a>
           </span>
           
@@ -125,13 +125,43 @@
         
 
         
-          <p>QuickXDev更新到3.3版本。</p>
-<ul>
-<li>更新提示文件。</li>
-<li>新建项目加入了orientation参数。</li>
-<li>win下的player修正了地址。</li>
+          <p>今天想把我的荣耀手机emui 3.0刷机成MIUI，没想过程中出现了大问题，“变砖”了，还好最后还是救活了，现记录一下。<br><a id="more"></a></p>
+<h1 id="环境">环境</h1><ul>
+<li>系统：mac os x 10.10</li>
+<li>虚拟机：parallels desktop 10, win7 32位</li>
+<li>手机：荣耀3C联通2G版 </li>
+<li>手机型号：H30-U10</li>
+<li>手机系统：emui3.0 B261版</li>
 </ul>
-<p>这个版本其实之前一段时间就做好了，但github提交不上去，今天有人在上面提到了3.3的兼容问题，就试着提交了，结果可以提交：）</p>
+<h1 id="准备工作">准备工作</h1><ul>
+<li>固件地址：<a href="http://www.miui.com/download-211.html" target="_blank" rel="external">http://www.miui.com/download-211.html</a></li>
+<li>说明：<a href="http://www.miui.com/thread-1640256-1-1.html" target="_blank" rel="external">http://www.miui.com/thread-1640256-1-1.html</a></li>
+<li>第三方recovery：<a href="http://www.miui.com/thread-1636770-1-1.html" target="_blank" rel="external">http://www.miui.com/thread-1636770-1-1.html</a></li>
+</ul>
+<p>本来是想用帖子推荐的方法刷入的，没想到刷第三方recovery的时候没有成功，于是作罢，最后才知道是要emui2.0的才可以。</p>
+<h1 id="刷机精灵">刷机精灵</h1><p>既然官方的不行，就试试了专业的刷机工具了。</p>
+<p>先用刷机精灵root，然后一步一步的刷，到最后把rom复制进手机之后，软件提示手机进入自动刷机模式，我也没去管它了。</p>
+<p>过了十多分钟发现手机一直停留在开机的honor界面，感觉不妙，就按了电源键，没响应，长按也没响应。</p>
+<p>最后只能开后盖，抠电池。</p>
+<h1 id="救活方法1">救活方法1</h1><p>这个时候看到刷机精灵官方有救活“变砖”的方法，下载了一个700多M的工具包。</p>
+<p>解压之后里面是一些驱动以及工具软件，工具好像叫“移动叔叔”（好奇怪的名字）。</p>
+<p>按步骤试了，到最后一步，按“下载”没反应，下方的进度条为0。</p>
+<p>这个方法试了几次都不行，放弃。</p>
+<h1 id="救活方法2">救活方法2</h1><p>之后上网搜索，有人说这个可以用强刷的方式救活，也就是把官方的rom放到SD卡目录下，同时按<code>音量+</code>、<code>音量-</code>和<code>电源键</code>20秒左右，之后松开，就可以进入自动刷机模式。</p>
+<p>于是出门去买了TF卡读卡器，把rom放进去，试了一下，遗憾的是等了很久还是在那个honor界面。</p>
+<p>这一方式也宣告失败。</p>
+<h1 id="救活方法3，成功">救活方法3，成功</h1><p>最后找到了华为官方推荐的方式（都怪我没有早点看到），地址：<a href="http://cn.club.vmall.com/forum.php?mod=viewthread&amp;tid=747288" target="_blank" rel="external">http://cn.club.vmall.com/forum.php?mod=viewthread&amp;tid=747288</a>，上面说是emui3.0以下的，但不管了，先试试再说。</p>
+<p>按照步骤，装了驱动，打开恢复工具，这个界面和那个<code>移动叔叔</code>好像，不过有手机型号选择。之后插上USB线，没想到下方的进度条动了，过了段时间，出现了完成的界面。</p>
+<p>这个时候有<strong>如释重负</strong>的感觉。</p>
+<p>之后我继续进行强刷的方式，可以进入到recovery界面，但刷机没有成功，说rom版本不在许可范围，以为又有什么变故，有点泄气。</p>
+<p>但不管如何，能进入recovery是个好兆头。</p>
+<p>最后试着重启进入系统，没想到成功了，而且看到的是<strong>MIUI</strong>，真是惊奇。</p>
+<p>现在怀疑是刷机精灵刷机的过程出现了问题。但不管怎样，手机还是救回来了，比较开心。</p>
+<p>很久没弄这些刷机的东西了，没想到这些给了我一下下马威:)</p>
+<p>后记：</p>
+<blockquote>
+<p>在这个过程中parallels desktop的设置是这样的：<code>设备</code>-&gt;<code>当检测到新的外部设备时</code>选择<code>连接到运行的虚拟机</code>，不知道这个跟win里直接认出手机有没有关系，因为在“变砖”时插上手机，在设备列表中是不看不到的。</p>
+</blockquote>
 
         
       </div>
@@ -142,8 +172,12 @@
         
           <div class="post-tags">
             
-              <a href="/blog/tags/QuickXDev/">
-                #QuickXDev
+              <a href="/blog/tags/刷机/">
+                #刷机
+              </a>
+            
+              <a href="/blog/tags/荣耀3C/">
+                #荣耀3C
               </a>
             
           </div>
@@ -153,13 +187,11 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/blog/2015/03/14/migrate-to-hexo/">博客引擎迁移到hexo</a>
-              
             </div>
 
             <div class="post-nav-next post-nav-item">
               
-                <a href="/blog/2015/02/27/new-domain/">启用新域名</a>
+                <a href="/blog/2015/03/14/migrate-to-hexo/">博客引擎迁移到hexo</a>
               
             </div>
           </div>
@@ -176,8 +208,8 @@
   
     <div class="comments" id="comments">
       
-        <div class="ds-thread" data-thread-key="2015/03/09/QuickXDev-ver3.3/"
-             data-title="QuickXDev更新到3.3" data-url="http://lonewolf.name/blog/2015/03/09/QuickXDev-ver3.3/">
+        <div class="ds-thread" data-thread-key="2015/03/17/honor3c-error/"
+             data-title="荣耀3C变砖记" data-url="http://lonewolf.name/blog/2015/03/17/honor3c-error/">
         </div>
 
       
@@ -253,7 +285,7 @@
 
     
       <div class="post-toc sidebar-panel-active">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#环境"><span class="nav-number">1.</span> <span class="nav-text">环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">2.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#刷机精灵"><span class="nav-number">3.</span> <span class="nav-text">刷机精灵</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#救活方法1"><span class="nav-number">4.</span> <span class="nav-text">救活方法1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#救活方法2"><span class="nav-number">5.</span> <span class="nav-text">救活方法2</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#救活方法3，成功"><span class="nav-number">6.</span> <span class="nav-text">救活方法3，成功</span></a></li></ol>
       </div>
     
   </div>
