@@ -20,9 +20,9 @@
 
 
 
-	<meta name="keywords" content="go," />
+	<meta name="keywords" content="github," />
 
-  <title> Go学习笔记：基础一 // lonewolf的博客 </title>
+  <title> 使用ssh方式上传到github // lonewolf的博客 </title>
 </head>
 
 <body>
@@ -93,7 +93,7 @@
           
           
             
-              Go学习笔记：基础一
+              使用ssh方式上传到github
             
           
         </h1>
@@ -102,15 +102,15 @@
       <div class="post-meta">
           <span class="post-time">
             
-              发表于 2015-02-14
+              发表于 2015-03-18
             
           </span>
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/blog/2015/02/14/go-study-part1/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/14/go-study-part1/"></span>
+            <a href="/blog/2015/03/18/github-ssh/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/18/github-ssh/"></span>
             </a>
           </span>
           
@@ -125,55 +125,46 @@
         
 
         
-          <p>最近在学习Go语言，按照<a href="http://tour.golangtc.com/list" target="_blank" rel="external">学习指南</a>学的，现把学习过程记录一下。</p>
-<p>这一章学习包、变量和函数。</p>
-<h3 id="包">包</h3><p>包定义都是在第一行，如：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br></pre></td></tr></table></figure>
-<p>导入别的包则用<code>import</code>，如：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"math"</span></span><br></pre></td></tr></table></figure>
-<p>也可以这样：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"math/rand"</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><strong>如果你引入了一个包，但没有使用它，是没法编译通过的</strong>，出错信息如下：<br><code>imported and not used: &quot;math&quot;</code><br>因为Go语言是静态编译，引入没有使用的包会增大最终执行文件的体积，所以Go强制这样做。</p>
-<p>Go语言提供了很多的标准包，具体可以看看<a href="http://mygodoc.oschina.mopaas.com/" target="_blank" rel="external">Go库文档（中文）</a>。</p>
-<blockquote>
-<p>Go语言编译运行时（<code>go run xxx.go</code>），该文件里必须有main包和main函数才能运行。</p>
-<p>Go语言语句结尾都没有分号<code>;</code>。</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="函数">函数</h3><p>函数以<code>func</code>关键字定义，如下：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> add(x <span class="typename">int</span>, y <span class="typename">int</span>) <span class="typename">int</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> x + y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> swap(x, y <span class="typename">string</span>) (<span class="typename">string</span>, <span class="typename">string</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> y, x</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> split(sum <span class="typename">int</span>) (x, y <span class="typename">int</span>) &#123;</span><br><span class="line">	x = sum * <span class="number">4</span> / <span class="number">9</span></span><br><span class="line">	y = sum - x</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">func</span> main() &#123;</span><br><span class="line">	fmt.Println(add(<span class="number">42</span>, <span class="number">13</span>))</span><br><span class="line">	a, b := swap(<span class="string">"hello"</span>, <span class="string">"world"</span>)</span><br><span class="line">	fmt.Println(a, b)</span><br><span class="line">	fmt.Println(split(<span class="number">17</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>参数的类型声明是放在变量名后面的。</li>
-<li>如果参数类型一样，除了最后一个要声明类型，之前的都可以省略。</li>
-<li>返回值的类型放在<code>)</code>和<code>{</code>之间，如果没有返回值，则为空。</li>
-<li>可以返回多个值，这时候返回的类型要用<code>(``)</code>包含起来。</li>
-<li>返回值可以被命名，<code>return</code>直接返回。</li>
-<li>函数<code>main</code>为主函数，一个项目里只有一个。</li>
+          <p>昨天上传东西到github的时候，又发生错误了，之前也遇到过：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unable to access &#39;https://github.com/xxx&#39;: Empty reply from server</span><br></pre></td></tr></table></figure>
+<p>网上有人说这是被<strong>“墙”</strong>的原因，可以用ssh的方式上传，于是试了一下，今天上传果然可以。</p>
+<p>github官方也有详细的介绍<br><a href="https://help.github.com/articles/generating-ssh-keys/" target="_blank" rel="external">https://help.github.com/articles/generating-ssh-keys/</a><br>以下以mac为例。<br><a id="more"></a></p>
+<h1 id="在本地生成ssh-key">在本地生成ssh-key</h1><ul>
+<li>打开终端，输入以下文字：</li>
 </ul>
-<h3 id="变量">变量</h3><p>变量以<code>var</code>关键字定义，类型声明放在后面，可以赋初始值。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="typename">int</span></span><br><span class="line"><span class="keyword">var</span> b <span class="typename">bool</span></span><br><span class="line"><span class="keyword">var</span> c, d <span class="typename">float64</span> = <span class="number">2.5</span>, <span class="number">5.0</span></span><br></pre></td></tr></table></figure>
-<p>也可以这样定义：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">func</span> main() &#123;</span><br><span class="line">    k := <span class="number">3</span></span><br><span class="line">    c, d, e := <span class="constant">false</span>, <span class="number">1</span>, <span class="string">"hello"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这个时候变量的类型由右边给出的值来推断，但这种形式<code>:=</code><strong>只能在函数内部使用</strong>。</p>
-<h3 id="常量">常量</h3><p>常量以<code>const</code>关键字定义，如：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Pi = <span class="number">3.14</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>常量不能以<code>:=</code>定义。<br>常量的类型是由右边的值来推断。</p>
-</blockquote>
-<h3 id="基本类型">基本类型</h3><p>Go语言的基本类型有：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="typename">bool</span> <span class="comment">// 初始值 false</span></span><br><span class="line"></span><br><span class="line"><span class="typename">string</span> <span class="comment">// 初始值为""（空字符串）</span></span><br><span class="line"></span><br><span class="line"><span class="typename">int</span>  <span class="typename">int8</span>  <span class="typename">int16</span>  <span class="typename">int32</span>  <span class="typename">int64</span></span><br><span class="line"><span class="typename">uint</span> <span class="typename">uint8</span> <span class="typename">uint16</span> <span class="typename">uint32</span> <span class="typename">uint64</span> <span class="typename">uintptr</span></span><br><span class="line"></span><br><span class="line"><span class="typename">byte</span> <span class="comment">// uint8 的别名</span></span><br><span class="line"></span><br><span class="line"><span class="typename">rune</span> <span class="comment">// int32 的别名</span></span><br><span class="line">     <span class="comment">// 代表一个Unicode码</span></span><br><span class="line"></span><br><span class="line"><span class="typename">float32</span> <span class="typename">float64</span></span><br><span class="line"></span><br><span class="line"><span class="typename">complex64</span> <span class="typename">complex128</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>数值类型的初始值是<code>0</code>。</p>
-</blockquote>
-<p><strong>类型转换</strong>，Go中没有隐型的类型转换，所有的转换都需要显式的转换，如：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i <span class="typename">int</span>= <span class="number">42</span></span><br><span class="line"><span class="keyword">var</span> f <span class="typename">float64</span> = <span class="typename">float64</span>(i)</span><br></pre></td></tr></table></figure>
-<p>或者：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i := <span class="number">10</span></span><br><span class="line">f := <span class="typename">float64</span>(i)</span><br></pre></td></tr></table></figure>
-<h3 id="注释">注释</h3><p>Go可以这样注释：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span><br><span class="line">  这是注释</span><br><span class="line">*/</span></span><br></pre></td></tr></table></figure>
-<p>也可以这样：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是注释</span></span><br></pre></td></tr></table></figure>
-<p>好了，这一章就这样了，先学个基础。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<ul>
+<li>接着会提示你，这个时候只要回车即可：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter file in which to save the key (/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+<ul>
+<li>之后是输入两次密码，密码要<strong>4位数</strong>以上的：</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty for no passphrase):&#10;Enter same passphrase again:</span><br></pre></td></tr></table></figure>
+<p>这个时候就有两个文件<code>~/.ssh/id_rsa</code>和<code>~/.ssh/id_rsa.pub</code>生成了。</p>
+<ul>
+<li>添加ssh-key</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure>
+<ul>
+<li>测试一下是否成功。</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+<p>出现<code>successfully authenticated</code>即是成功。</p>
+<ul>
+<li>复制ssh-key进剪贴板</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pbcopy &#60; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<h1 id="在github上设置">在github上设置</h1><ul>
+<li>进github的网站<br><a href="https://github.com/settings/ssh" target="_blank" rel="external">https://github.com/settings/ssh</a></li>
+<li>添加ssh key<br><img src="https://help.github.com/assets/images/help/settings/ssh-add-ssh-key.png" alt="ssh-add-ssh-key"></li>
+</ul>
+<p>在以下的界面中，title可以随便填写，在key一栏粘贴即可。</p>
+<p><img src="https://help.github.com/assets/images/help/settings/ssh-key-paste.png" alt="ssh-key-paste"></p>
+<p>最后点击按钮。</p>
+<p><img src="https://help.github.com/assets/images/help/settings/ssh-add-key.png" alt="ssh-add-key"></p>
+<h1 id="sourcetree">sourcetree</h1><p>如果用sourcetree的话，就要把远程库<code>https://github.com/～.git</code>改成<code>git@github.com:～.git</code></p>
+<p>最后重启一下机子。</p>
 
         
       </div>
@@ -184,8 +175,8 @@
         
           <div class="post-tags">
             
-              <a href="/blog/tags/go/">
-                #go
+              <a href="/blog/tags/github/">
+                #github
               </a>
             
           </div>
@@ -195,13 +186,11 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/blog/2015/02/27/magi/">启用新域名</a>
-              
             </div>
 
             <div class="post-nav-next post-nav-item">
               
-                <a href="/blog/2015/02/08/winxin-jssdk-src/">微信JSSDK接入问题记录及源码</a>
+                <a href="/blog/2015/03/17/honor3c-error/">荣耀3C变砖记</a>
               
             </div>
           </div>
@@ -218,8 +207,8 @@
   
     <div class="comments" id="comments">
       
-        <div class="ds-thread" data-thread-key="2015/02/14/go-study-part1/"
-             data-title="Go学习笔记：基础一" data-url="http://lonewolf.name/blog/2015/02/14/go-study-part1/">
+        <div class="ds-thread" data-thread-key="2015/03/18/github-ssh/"
+             data-title="使用ssh方式上传到github" data-url="http://lonewolf.name/blog/2015/03/18/github-ssh/">
         </div>
 
       
@@ -295,7 +284,7 @@
 
     
       <div class="post-toc sidebar-panel-active">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#包"><span class="nav-number">1.</span> <span class="nav-text">包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量"><span class="nav-number">3.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量"><span class="nav-number">4.</span> <span class="nav-text">常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本类型"><span class="nav-number">5.</span> <span class="nav-text">基本类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">6.</span> <span class="nav-text">注释</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#在本地生成ssh-key"><span class="nav-number">1.</span> <span class="nav-text">在本地生成ssh-key</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在github上设置"><span class="nav-number">2.</span> <span class="nav-text">在github上设置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sourcetree"><span class="nav-number">3.</span> <span class="nav-text">sourcetree</span></a></li></ol>
       </div>
     
   </div>
