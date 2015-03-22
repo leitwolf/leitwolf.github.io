@@ -14,7 +14,7 @@ tags:
 
 在终端中执行：
 
-```shell
+```
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 这样就安装好homebrew了。
@@ -23,7 +23,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 如安装wget，则执行：
 
-```shell
+```
 brew install wget
 ```
 其它具体的使用方法可自行翻阅 [官网（中文）](http://brew.sh/index_zh-cn.html)。
@@ -31,13 +31,13 @@ brew install wget
 #安装apache php mysql
 因为apache和php不在默认的仓库里，所以我们要先添加其所在的仓库。
 
-```shell
+```
 brew tap homebrew/apache
 brew tap homebrew/php
 ```
 之后就是正常的安装了，安装过程homebrew会为你自行处理各种依赖。
 
-```shell
+```
 brew install httpd24
 brew install php53
 brew install mysql
@@ -107,13 +107,13 @@ myisam_sort_buffer_size = 8M
 
 * 安装
 
-```shell
+```
 brew install caskroom/cask/brew-cask
 ```
 
 *  使用
 
-```shell
+```
 brew cask install google-chrome
 ```
 具体的功能请翻阅官网。
@@ -122,7 +122,7 @@ brew cask install google-chrome
 [LaunchRocket](https://github.com/jimbojsb/launchrocket)是管理homebrew所安装应用的一个管理器，它在**系统设置**中。
 安装命令：
 
-```shell
+```
 brew cask install launchrocket
 ```
 界面如下：

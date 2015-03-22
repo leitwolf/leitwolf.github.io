@@ -131,18 +131,18 @@
 <li>安装homebrew </li>
 </ul>
 <p>在终端中执行：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&#34;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)</span>"</span></span><br></pre></td></tr></table></figure>
 <p>这样就安装好homebrew了。</p>
 <ul>
 <li>安装命令行软件</li>
 </ul>
 <p>如安装wget，则执行：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install wget</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew <span class="keyword">install</span> wget</span><br></pre></td></tr></table></figure>
 <p>其它具体的使用方法可自行翻阅 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">官网（中文）</a>。</p>
 <h1 id="安装apache_php_mysql">安装apache php mysql</h1><p>因为apache和php不在默认的仓库里，所以我们要先添加其所在的仓库。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew tap homebrew/apache&#10;brew tap homebrew/php</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">brew</span> tap homebrew/apache</span><br><span class="line">brew tap homebrew/php</span><br></pre></td></tr></table></figure>
 <p>之后就是正常的安装了，安装过程homebrew会为你自行处理各种依赖。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install httpd24&#10;brew install php53&#10;brew install mysql</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">brew <span class="keyword">install</span> httpd24</span><br><span class="line">brew <span class="keyword">install</span> php53</span><br><span class="line">brew <span class="keyword">install</span> mysql</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意：apache在homebrew中的名字为httpd。<br>这些都可以指定安装的版本，这里我安装apache2.4，php5.3，mysql是最新版。<br><strong>以下的路径说明都是以这个为基准</strong>，请自行修改为你所下载的版本。</p>
 </blockquote>
@@ -170,14 +170,14 @@
 <ul>
 <li>安装</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install caskroom/cask/brew-cask</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew <span class="keyword">install</span> caskroom/cask/brew-cask</span><br></pre></td></tr></table></figure>
 <ul>
 <li>使用</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install google-chrome</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask <span class="keyword">install</span> google-chrome</span><br></pre></td></tr></table></figure>
 <p>具体的功能请翻阅官网。</p>
 <h1 id="LaunchRocket">LaunchRocket</h1><p><a href="https://github.com/jimbojsb/launchrocket" target="_blank" rel="external">LaunchRocket</a>是管理homebrew所安装应用的一个管理器，它在<strong>系统设置</strong>中。<br>安装命令：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install launchrocket</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask <span class="keyword">install</span> launchrocket</span><br></pre></td></tr></table></figure>
 <p>界面如下：<br><img src="/blog/pic/homebrew-apache-php-mysql-1.png" alt="launchrocket"></p>
 <blockquote>
 <p>不知道为什么，<code>httpd</code>需要选<code>As Root</code>才能真正运行起来。</p>
