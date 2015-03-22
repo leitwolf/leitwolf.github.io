@@ -20,19 +20,9 @@
 
 
 
+	<meta name="keywords" content="homebrew," />
 
-    <meta name="keywords" content="Hexo,next" />
-
-
-
-
-
-    <link rel="shorticon icon" type="image/x-icon" href="/blog/favicon.ico?v=0.3.0rc5" />
-
-
-
-
-  <title> 启用新域名 // lonewolf的博客 </title>
+  <title> MAC下用homebrew安装及配置apache、php和mysql // lonewolf的博客 </title>
 </head>
 
 <body>
@@ -103,7 +93,7 @@
           
           
             
-              启用新域名
+              MAC下用homebrew安装及配置apache、php和mysql
             
           
         </h1>
@@ -112,15 +102,15 @@
       <div class="post-meta">
           <span class="post-time">
             
-              发表于 2015-02-27
+              发表于 2015-03-22
             
           </span>
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/blog/2015/02/27/magi/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/27/magi/"></span>
+            <a href="/blog/2015/03/22/homebrew-apache-php-mysql/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/22/homebrew-apache-php-mysql/"></span>
             </a>
           </span>
           
@@ -135,8 +125,67 @@
         
 
         
-          <p>今天在万网买了个新域名，哈哈。</p>
-<p>以后我的空间可以直接访问这个 <a href="http://lonewolf.name/" target="_blank" rel="external">http://lonewolf.name</a>。</p>
+          <p>我们用到php运行环境的时候总喜欢用集成包，其实在mac下，用homebrew也可以很快的安装这些东西，配置也很简单。<br><a id="more"></a></p>
+<h1 id="homebrew">homebrew</h1><p><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">homebrew</a>是mac下的一个包安装管理工具，使用非常简单方便。</p>
+<ul>
+<li>安装homebrew </li>
+</ul>
+<p>在终端中执行：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -e &#34;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&#34;</span><br></pre></td></tr></table></figure>
+<p>这样就安装好homebrew了。</p>
+<ul>
+<li>安装命令行软件</li>
+</ul>
+<p>如安装wget，则执行：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install wget</span><br></pre></td></tr></table></figure>
+<p>其它具体的使用方法可自行翻阅 <a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">官网（中文）</a>。</p>
+<h1 id="安装apache_php_mysql">安装apache php mysql</h1><p>因为apache和php不在默认的仓库里，所以我们要先添加其所在的仓库。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew tap homebrew/apache&#10;brew tap homebrew/php</span><br></pre></td></tr></table></figure>
+<p>之后就是正常的安装了，安装过程homebrew会为你自行处理各种依赖。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install httpd24&#10;brew install php53&#10;brew install mysql</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：apache在homebrew中的名字为httpd。<br>这些都可以指定安装的版本，这里我安装apache2.4，php5.3，mysql是最新版。<br><strong>以下的路径说明都是以这个为基准</strong>，请自行修改为你所下载的版本。</p>
+</blockquote>
+<h1 id="配置apache">配置apache</h1><p>配置文件路径为<code>/usr/local/etc/apache2/2.4/httpd.conf</code>，以下的配置都需要在相应的地方修改。</p>
+<ul>
+<li>添加php模块</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ====php module====</span></span><br><span class="line"><span class="keyword"><span class="common">LoadModule</span></span> php5_module /usr/local/Cellar/php53/5.3.29/libexec/apache2/libphp5.so</span><br><span class="line"><span class="tag">&lt;IfModule mod_php5.c&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">AddType</span> application/x-httpd-php .php</span><br><span class="line">    <span class="keyword">AddType</span> application/x-httpd-php-source .phps</span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;IfModule mod_dir.c&gt;</span></span><br><span class="line">        <span class="keyword">DirectoryIndex</span> index.html index.php</span><br><span class="line">    <span class="tag">&lt;/IfModule&gt;</span></span><br><span class="line"><span class="tag">&lt;/IfModule&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改监听端口<br>默认的端口为8080，我们改为80：</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword"><span class="common">Listen</span></span> 80</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改root根目录</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword"><span class="common">DocumentRoot</span></span> <span class="string">"/Users/lonewolf/Public/dev/php/app"</span></span><br><span class="line"><span class="tag">&lt;Directory "/Users/lonewolf/Public/dev/php/app"&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>请自行修改为你的目录</p>
+</blockquote>
+<h1 id="配置mysql">配置mysql</h1><p>使用默认的mysql配置启动时，会占用<strong>434M</strong>的内存，这个占用太多了，所以要修改一下。<br>配置路径为<code>/usr/local/Cellar/mysql/5.6.23/my.cnf</code>。</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ========</span></span><br><span class="line"></span><br><span class="line">skip-external-locking</span><br><span class="line"><span class="constant">key_buffer</span> = 16M</span><br><span class="line"><span class="constant">max_allowed_packet</span> = 1M</span><br><span class="line"><span class="constant">table_open_cache</span> = 64</span><br><span class="line"><span class="constant">sort_buffer_size</span> = 512K</span><br><span class="line"><span class="constant">net_buffer_length</span> = 8K</span><br><span class="line"><span class="constant">read_buffer_size</span> = 256K</span><br><span class="line"><span class="constant">read_rnd_buffer_size</span> = 512K</span><br><span class="line"><span class="constant">myisam_sort_buffer_size</span> = 8M</span><br><span class="line"></span><br><span class="line"><span class="comment"># ========</span></span><br></pre></td></tr></table></figure>
+<p>这样启动之后就下降到<strong>100M</strong>以下了。</p>
+<p>到这里，我们的安装和配置就完成了，不过有一点很不好，就是启动和停止这些服务都需要在命令行下输入，有没有图形化的管理界面呢？<br>有的，答案是<code>LaunchRocket</code>，说这个之前我们先来了解一下另一个工具<code>homebrew-cask</code>。</p>
+<h1 id="homebrew-cask">homebrew-cask</h1><p><a href="caskroom.io">homebrew-cask</a>是homebrew的一个扩展，用于安装图形界面mac程序，如<code>google chrome</code>、<code>QQ</code>等等。</p>
+<ul>
+<li>安装</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install caskroom/cask/brew-cask</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install google-chrome</span><br></pre></td></tr></table></figure>
+<p>具体的功能请翻阅官网。</p>
+<h1 id="LaunchRocket">LaunchRocket</h1><p><a href="https://github.com/jimbojsb/launchrocket" target="_blank" rel="external">LaunchRocket</a>是管理homebrew所安装应用的一个管理器，它在<strong>系统设置</strong>中。<br>安装命令：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew cask install launchrocket</span><br></pre></td></tr></table></figure>
+<p>界面如下：<br><img src="/blog/pic/homebrew-apache-php-mysql-1.png" alt="launchrocket"></p>
+<blockquote>
+<p>不知道为什么，<code>httpd</code>需要选<code>As Root</code>才能真正运行起来。</p>
+</blockquote>
+<p>到此，安装、配置、运行各方面都完成了。</p>
+<h1 id="其它工具">其它工具</h1><p>最后介绍两个有用的工具：</p>
+<h3 id="1、cakebrew">1、cakebrew</h3><p><a href="https://www.cakebrew.com" target="_blank" rel="external">cakebrew</a>是图形化管理homebrew的一个软件，也就是让你不用敲命令即可安装软件。<br><img src="https://www.cakebrew.com/assets/img/app-bg.png" alt="cakebrew"></p>
+<h3 id="2、adminer">2、adminer</h3><p><a href="http://www.adminer.org/" target="_blank" rel="external">adminer</a>是用php写的一个数据库管理工具，可以管理 MySQL, PostgreSQL, SQLite, MS SQL, Oracle, MongoDB等类型数据库，而且还是<strong>单文件</strong>，安装部署非常方便，支持多种语言。<br><img src="http://www.adminer.org/static/screenshots/db.png" alt="adminer"></p>
 
         
       </div>
@@ -145,18 +194,24 @@
     
       <div class="post-footer">
         
+          <div class="post-tags">
+            
+              <a href="/blog/tags/homebrew/">
+                #homebrew
+              </a>
+            
+          </div>
+        
 
         
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/blog/2015/02/27/new-domain/">启用新域名</a>
-              
             </div>
 
             <div class="post-nav-next post-nav-item">
               
-                <a href="/blog/2015/02/14/go-study-part1/">Go学习笔记：基础一</a>
+                <a href="/blog/2015/03/18/github-ssh/">使用ssh方式上传到github</a>
               
             </div>
           </div>
@@ -173,8 +228,8 @@
   
     <div class="comments" id="comments">
       
-        <div class="ds-thread" data-thread-key="2015/02/27/magi/"
-             data-title="启用新域名" data-url="http://lonewolf.name/blog/2015/02/27/magi/">
+        <div class="ds-thread" data-thread-key="2015/03/22/homebrew-apache-php-mysql/"
+             data-title="MAC下用homebrew安装及配置apache、php和mysql" data-url="http://lonewolf.name/blog/2015/03/22/homebrew-apache-php-mysql/">
         </div>
 
       
@@ -250,7 +305,7 @@
 
     
       <div class="post-toc sidebar-panel-active">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#homebrew"><span class="nav-number">1.</span> <span class="nav-text">homebrew</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装apache_php_mysql"><span class="nav-number">2.</span> <span class="nav-text">安装apache php mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置apache"><span class="nav-number">3.</span> <span class="nav-text">配置apache</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置mysql"><span class="nav-number">4.</span> <span class="nav-text">配置mysql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#homebrew-cask"><span class="nav-number">5.</span> <span class="nav-text">homebrew-cask</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#LaunchRocket"><span class="nav-number">6.</span> <span class="nav-text">LaunchRocket</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其它工具"><span class="nav-number">7.</span> <span class="nav-text">其它工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、cakebrew"><span class="nav-number">7.0.1.</span> <span class="nav-text">1、cakebrew</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、adminer"><span class="nav-number">7.0.2.</span> <span class="nav-text">2、adminer</span></a></li></ol></li></ol></li></ol>
       </div>
     
   </div>
