@@ -20,9 +20,9 @@
 
 
 
-	<meta name="keywords" content="hexo,site," />
+	<meta name="keywords" content="mysql," />
 
-  <title> 博客引擎迁移到hexo // lonewolf的博客 </title>
+  <title> mysql启动故障排查 // lonewolf的博客 </title>
 </head>
 
 <body>
@@ -93,7 +93,7 @@
           
           
             
-              博客引擎迁移到hexo
+              mysql启动故障排查
             
           
         </h1>
@@ -102,15 +102,15 @@
       <div class="post-meta">
           <span class="post-time">
             
-              发表于 2015-03-14
+              发表于 2015-03-23
             
           </span>
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/blog/2015/03/14/migrate-to-hexo/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/14/migrate-to-hexo/"></span>
+            <a href="/blog/2015/03/23/mysql-error/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/23/mysql-error/"></span>
             </a>
           </span>
           
@@ -125,7 +125,18 @@
         
 
         
-          <p>之前使用的是jekyll，现在改到了hexo，也重新选择了新主题，顺便添加了多说评论系统。<br><img src="/blog/pic/migrate-to-hexo-1.jpg" alt="图片1"><br><img src="/blog/pic/migrate-to-hexo-2.jpg" alt="图片1"></p>
+          <p>昨天提到<a href="http://lonewolf.name/blog/2015/03/22/homebrew-apache-php-mysql/" target="_blank" rel="external">用homebrew安装apache、php、mysql</a>，运行得好好的，今天mysql却启动不了，在命令行下的提示为：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Starting MySQL.<span class="class">.The</span> server quit without updating PID file (/var/lib/mysql/pan<span class="class">.pan</span><span class="class">.pid</span></span><br></pre></td></tr></table></figure>
+<p>于是翻看日志。<br><a id="more"></a></p>
+<h1 id="原因">原因</h1><p>日志中这么一句：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>local<span class="regexp">/Cellar/my</span>sql<span class="regexp">/5.6.23/</span>bin<span class="regexp">/mysqld: Can't find file: './my</span>sql<span class="regexp">/plugin.frm' (errno: 13 - Permission denied)</span></span><br></pre></td></tr></table></figure>
+<p>是权限问题，后面还有一堆的<code>ERROR</code>，不过应该是由这个引起的。</p>
+<h1 id="解决1">解决1</h1><p>mysql的数据文件是放在<code>/usr/local/var/mysql</code>这个路径下的。<br>对<code>./mysql/plugin.frm</code>授权：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">sudo</span> chmod <span class="number">777</span> plugin.frm</span><br></pre></td></tr></table></figure>
+<p>启动之后还是不行。</p>
+<h1 id="解决2">解决2</h1><p>对整个目录：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R <span class="string">mysql:</span>mysql <span class="regexp">/usr/</span>local<span class="regexp">/var/</span>mysql</span><br></pre></td></tr></table></figure>
+<p>重启后成功。</p>
 
         
       </div>
@@ -136,12 +147,8 @@
         
           <div class="post-tags">
             
-              <a href="/blog/tags/hexo/">
-                #hexo
-              </a>
-            
-              <a href="/blog/tags/site/">
-                #site
+              <a href="/blog/tags/mysql/">
+                #mysql
               </a>
             
           </div>
@@ -151,13 +158,11 @@
           <div class="post-nav">
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/blog/2015/03/17/honor3c-error/">荣耀3C变砖记</a>
-              
             </div>
 
             <div class="post-nav-next post-nav-item">
               
-                <a href="/blog/2015/03/09/QuickXDev-ver3.3/">QuickXDev更新到3.3</a>
+                <a href="/blog/2015/03/22/homebrew-apache-php-mysql/">MAC下用homebrew安装及配置apache、php和mysql</a>
               
             </div>
           </div>
@@ -174,8 +179,8 @@
   
     <div class="comments" id="comments">
       
-        <div class="ds-thread" data-thread-key="2015/03/14/migrate-to-hexo/"
-             data-title="博客引擎迁移到hexo" data-url="http://lonewolf.name/blog/2015/03/14/migrate-to-hexo/">
+        <div class="ds-thread" data-thread-key="2015/03/23/mysql-error/"
+             data-title="mysql启动故障排查" data-url="http://lonewolf.name/blog/2015/03/23/mysql-error/">
         </div>
 
       
@@ -251,7 +256,7 @@
 
     
       <div class="post-toc sidebar-panel-active">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原因"><span class="nav-number">1.</span> <span class="nav-text">原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决1"><span class="nav-number">2.</span> <span class="nav-text">解决1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决2"><span class="nav-number">3.</span> <span class="nav-text">解决2</span></a></li></ol>
       </div>
     
   </div>

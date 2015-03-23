@@ -32,11 +32,13 @@
 
 
 
-  <title> 标签: 荣耀3C // lonewolf的博客 </title>
+  <title> lonewolf的博客 </title>
 </head>
 
 <body>
-  <div class="container one-column ">
+  <div class="container one-column 
+   page-home 
+">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -90,12 +92,8 @@
             
           
 
-          <div id="posts" class="posts-collapse">
+          <div id="posts" class="posts-expand">
             
-  <div class="collection-title">
-    <h2 >荣耀3C</h2>
-  </div>
-
   
     
 
@@ -108,8 +106,8 @@
           
           
             
-              <a class="post-title-link" href="/blog/2015/03/17/honor3c-error/">
-                荣耀3C变砖记
+              <a class="post-title-link" href="/blog/2015/01/23/Python-Lex-Yacc/">
+                【译】Python Lex Yacc手册
               </a>
             
           
@@ -119,15 +117,15 @@
       <div class="post-meta">
           <span class="post-time">
             
-              03-17
+              发表于 2015-01-23
             
           </span>
         
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/blog/2015/03/17/honor3c-error/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/17/honor3c-error/"></span>
+            <a href="/blog/2015/01/23/Python-Lex-Yacc/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/01/23/Python-Lex-Yacc/"></span>
             </a>
           </span>
           
@@ -136,7 +134,48 @@
     </div>
 
     
+      <div class="post-body">
 
+        
+        
+
+        
+          
+            <hr>
+<p><strong><em>原博客地址为：<a href="http://www.pchou.info/open-source/2014/01/18/52da47204d4cb.html">http://www.pchou.info/open-source/2014/01/18/52da47204d4cb.html</a></em></strong><br><strong><em>本人（lonewolf）只是把内容整理成markdown格式，并发布出<a href="/blog/files/【译】Python Lex Yacc手册.pdf">PDF</a>文档。</em></strong></p>
+<hr>
+<p><strong><em>January 18th, 2014</em></strong></p>
+<p><strong>本文是PLY (Python Lex-Yacc)的中文翻译版。转载请注明出处。</strong></p>
+<p>如果你从事编译器或解析器的开发工作，你可能对lex和yacc不会陌生，PLY是David Beazley实现的基于Python的lex和yacc。作者最著名的成就可能是其撰写的Python Cookbook, 3rd Edition。我因为偶然的原因接触了PLY，觉得是个好东西，但是似乎国内没有相关的资料。于是萌生了翻译的想法，虽然内容不算多，但是由于能力有限，很多概念不了解，还专门补习了编译原理，这对我有很大帮助。为了完成翻译，经过初译，复审，排版等，花费我很多时间，最终还是坚持下来了，希望对需要的人有所帮助。另外，第一次大规模翻译英文，由于水平有限，如果错误或者不妥的地方还请指正，非常感谢。<br>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/blog/2015/01/23/Python-Lex-Yacc/#more">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/blog/tags/python/">
+                #python
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
     
   </div>
 
@@ -145,6 +184,10 @@
 
           </div>
 
+          
+            <div class="pagination">
+              <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+            </div>
           
         </div>
 
@@ -281,6 +324,17 @@
   <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js"></script>
 
   
+  <script type="text/javascript" id="motion.page.home">
+    $(document).ready(function () {
+      $.Velocity.RunSequence([
+        { e: $('.brand'), p: { opacity: 1 }, o: { duration: 100 } },
+        { e: $('.logo'), p: { opacity: 1, top: 0 }, o: { duration: 50} },
+        { e: $('.site-title'), p: { opacity: 1, top: 0 }, o: { duration: 200, sequenceQueue: false } }
+      ]);
+      $('.menu-item').velocity('transition.slideDownIn', {display: null});
+    });
+  </script>
+
 
   <script type="text/javascript" id="motion.global">
   $(document).ready(function () {
