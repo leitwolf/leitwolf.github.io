@@ -4,6 +4,10 @@ date: 2015/03/22 20:07:00
 tags: 
 - homebrew
 ---
+原链接地址：[http://lonewolf.name/blog/2015/03/22/homebrew-apache-php-mysql/](http://lonewolf.name/blog/2015/03/22/homebrew-apache-php-mysql/)
+原创博客，转载请注明。
+
+---
 
 我们用到php运行环境的时候总喜欢用集成包，其实在mac下，用homebrew也可以很快的安装这些东西，配置也很简单。
 <!-- more -->
@@ -103,7 +107,7 @@ myisam_sort_buffer_size = 8M
 有的，答案是`LaunchRocket`，说这个之前我们先来了解一下另一个工具`homebrew-cask`。
 
 #homebrew-cask
-[homebrew-cask](caskroom.io)是homebrew的一个扩展，用于安装图形界面mac程序，如`google chrome`、`QQ`等等。
+[homebrew-cask](http://caskroom.io/)是homebrew的一个扩展，用于安装图形界面mac程序，如`google chrome`、`QQ`等等。
 
 * 安装
 

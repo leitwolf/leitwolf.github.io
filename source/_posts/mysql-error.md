@@ -4,6 +4,11 @@ date: 2015/03/23 12:19:00
 tags: 
 - mysql
 ---
+原链接地址：[http://lonewolf.name/blog/2015/03/23/mysql-error/](http://lonewolf.name/blog/2015/03/23/mysql-error/)
+原创博客，转载请注明。
+
+---
+
 昨天提到[用homebrew安装apache、php、mysql](http://lonewolf.name/blog/2015/03/22/homebrew-apache-php-mysql/)，运行得好好的，今天mysql却启动不了，在命令行下的提示为：
 
 ```

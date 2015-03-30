@@ -125,7 +125,9 @@
         
 
         
-          <p>我们用到php运行环境的时候总喜欢用集成包，其实在mac下，用homebrew也可以很快的安装这些东西，配置也很简单。<br><a id="more"></a></p>
+          <p>原链接地址：<a href="http://lonewolf.name/blog/2015/03/22/homebrew-apache-php-mysql/" target="_blank" rel="external">http://lonewolf.name/blog/2015/03/22/homebrew-apache-php-mysql/</a><br>原创博客，转载请注明。</p>
+<hr>
+<p>我们用到php运行环境的时候总喜欢用集成包，其实在mac下，用homebrew也可以很快的安装这些东西，配置也很简单。<br><a id="more"></a></p>
 <h1 id="homebrew">homebrew</h1><p><a href="http://brew.sh/index_zh-cn.html" target="_blank" rel="external">homebrew</a>是mac下的一个包安装管理工具，使用非常简单方便。</p>
 <ul>
 <li>安装homebrew </li>
@@ -166,7 +168,7 @@
 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ========</span></span><br><span class="line"></span><br><span class="line">skip-external-locking</span><br><span class="line"><span class="constant">key_buffer</span> = 16M</span><br><span class="line"><span class="constant">max_allowed_packet</span> = 1M</span><br><span class="line"><span class="constant">table_open_cache</span> = 64</span><br><span class="line"><span class="constant">sort_buffer_size</span> = 512K</span><br><span class="line"><span class="constant">net_buffer_length</span> = 8K</span><br><span class="line"><span class="constant">read_buffer_size</span> = 256K</span><br><span class="line"><span class="constant">read_rnd_buffer_size</span> = 512K</span><br><span class="line"><span class="constant">myisam_sort_buffer_size</span> = 8M</span><br><span class="line"></span><br><span class="line"><span class="comment"># ========</span></span><br></pre></td></tr></table></figure>
 <p>这样启动之后就下降到<strong>100M</strong>以下了。</p>
 <p>到这里，我们的安装和配置就完成了，不过有一点很不好，就是启动和停止这些服务都需要在命令行下输入，有没有图形化的管理界面呢？<br>有的，答案是<code>LaunchRocket</code>，说这个之前我们先来了解一下另一个工具<code>homebrew-cask</code>。</p>
-<h1 id="homebrew-cask">homebrew-cask</h1><p><a href="caskroom.io">homebrew-cask</a>是homebrew的一个扩展，用于安装图形界面mac程序，如<code>google chrome</code>、<code>QQ</code>等等。</p>
+<h1 id="homebrew-cask">homebrew-cask</h1><p><a href="http://caskroom.io/" target="_blank" rel="external">homebrew-cask</a>是homebrew的一个扩展，用于安装图形界面mac程序，如<code>google chrome</code>、<code>QQ</code>等等。</p>
 <ul>
 <li>安装</li>
 </ul>

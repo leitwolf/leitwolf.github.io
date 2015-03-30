@@ -4,6 +4,10 @@ date: 2015/03/18 11:19:00
 tags: 
 - github
 ---
+原链接地址：[http://lonewolf.name/blog/2015/03/18/github-ssh/](http://lonewolf.name/blog/2015/03/18/github-ssh/)
+原创博客，转载请注明。
+
+---
 
 昨天上传东西到github的时候，又发生错误了，之前也遇到过：
 
