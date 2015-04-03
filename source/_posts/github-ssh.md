@@ -1,8 +1,10 @@
 ---
 title: 使用ssh方式上传到github
 date: 2015/03/18 11:19:00
+categories: 随笔
 tags: 
 - github
+- ssh github
 ---
 原链接地址：[http://lonewolf.name/blog/2015/03/18/github-ssh/](http://lonewolf.name/blog/2015/03/18/github-ssh/)
 原创博客，转载请注明。

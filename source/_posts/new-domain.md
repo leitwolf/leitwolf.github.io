@@ -1,6 +1,7 @@
 ---
 title: 启用新域名
 date: 2015/02/27 10:00:00
+categories: 随笔
 tags: site
 ---
 

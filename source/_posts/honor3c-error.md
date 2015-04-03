@@ -1,6 +1,7 @@
 ---
 title: 荣耀3C变砖记
 date: 2015/03/17 22:27:00
+categories: 随笔
 tags: 
 - 荣耀3C
 - 刷机

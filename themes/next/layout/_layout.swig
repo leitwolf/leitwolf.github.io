@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="theme-next {% if theme.use_motion %}use-motion{% endif %}">
+<html class="theme-next {% if theme.use_motion %}use-motion{% endif %} {% if theme.theme %}theme-next-{{theme.theme}}{% endif %}">
 <head>
   {% include '_partials/head.swig' %}
   <title>{% block title %}{% endblock %}</title>
@@ -30,7 +30,7 @@
 
           {% if not is_post() and (page.prev || page.next) %}
             <div class="pagination">
-              {{ paginator({prev_text: '&laquo;', next_text: '&raquo;'}) }}
+              {{ paginator({prev_text: '&laquo;', next_text: '&raquo;', mid_size: 1}) }}
             </div>
           {% endif %}
         </div>
@@ -50,6 +50,9 @@
   </div>
 
   <script type="text/javascript" src="{{ url_for(theme.vendors) }}/jquery/index.js?v=2.1.3"></script>
+
+  {# This block is used to set options before any other scripts run #}
+  {% block script_extra_before %}{% endblock %}
 
   {% include '_scripts/fancy-box.swig' %}
   {% include '_scripts/helpers.swig' %}

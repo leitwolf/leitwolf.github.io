@@ -1,7 +1,8 @@
 ---
 title: 【译】Python Lex Yacc手册
 date: 2015/01/23 10:00:00
-tags: python
+categories: python
+tags: 词法语法解析
 ---
 
 ----

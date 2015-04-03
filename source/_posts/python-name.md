@@ -1,0 +1,70 @@
+---
+title: python命名规范
+date: 2015/04/03 20:40:00
+categories: python
+tags: 
+- python命名规范
+---
+原链接地址：[http://lonewolf.name/blog/2015/04/03/python-name/](http://lonewolf.name/blog/2015/04/03/python-name/)
+原创博客，转载请注明。
+
+---
+
+简要记一下python的命名规范。
+
+#常量
+常量名所有字母大写，由下划线连接各个单词。
+
+```python
+WHITE = 0xFFFFFF
+THIS_IS_A_CONSTANT = 1
+```
+<!-- more -->
+#变量
+变量名全部小写，由下划线连接各个单词。
+
+```python
+color = "red"
+this_is_a_var = 10
+```
+#函数
+与变量命名相同，由小写字母组成，并由下划线连接各个单词。
+
+```python
+def count():
+    pass
+
+def set_function_name(name):
+    pass
+```
+#类
+驼峰，首字母大写。
+
+```python
+class ThisIsAClass(object):
+    pass
+```
+#模块
+小写，字母间以下划线连接。
+
+```python
+module.py
+my_module.py
+```
+#包
+与模块一样。
+
+#私有
+在之前的基础上加上前导_(下划线)。
+
+```python
+_internal_color = "red"
+
+def _internal_function(name):
+    pass
+
+_internal_module.py
+```
+
+> 最后要注意：
+> 不要以__doc__（前导后缀双下划线）命名，这是系统自己用的。

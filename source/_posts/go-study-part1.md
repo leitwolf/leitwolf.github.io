@@ -1,6 +1,7 @@
 ---
 title: Go学习笔记：基础一
 date: 2015/02/14 10:00:00
+categories: go
 tags: go
 ---
 

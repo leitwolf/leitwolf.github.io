@@ -1,8 +1,10 @@
 ---
 title: MAC下用homebrew安装及配置apache、php和mysql
 date: 2015/03/22 20:07:00
+categories: webserver
 tags: 
 - homebrew
+- 安装及配置apache、php和mysql
 ---
 原链接地址：[http://lonewolf.name/blog/2015/03/22/homebrew-apache-php-mysql/](http://lonewolf.name/blog/2015/03/22/homebrew-apache-php-mysql/)
 原创博客，转载请注明。

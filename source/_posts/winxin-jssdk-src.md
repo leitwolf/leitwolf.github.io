@@ -1,6 +1,7 @@
 ---
 title: 微信JSSDK接入问题记录及源码
 date: 2015/02/08 10:00:00
+categories: html5
 tags: 
 - 微信
 - JSSDK

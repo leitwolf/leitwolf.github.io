@@ -1,6 +1,7 @@
 ---
 title: mysql启动故障排查
 date: 2015/03/23 12:19:00
+categories: webserver
 tags: 
 - mysql
 ---

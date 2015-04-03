@@ -1,6 +1,7 @@
 ---
 title: QuickXDev更新到3.3
 date: 2015/03/09 10:00:00
+categories: QuickXDev
 tags: QuickXDev
 ---
 

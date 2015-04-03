@@ -1,8 +1,9 @@
 menu:
   home: /blog/
+  categories: /blog/categories
   archives: /blog/archives
   tags: /blog/tags
-  # about: /blog/about
+  #about: /about
 
 # Place your favicon.ico to /source directory.
 favicon: /blog/favicon.ico
@@ -33,8 +34,16 @@ highlight_theme: night eighties
 mathjax:
 
 
+# Schemes
+scheme: Mist
+
+
 # Automatically scroll page to section which is under <!-- more --> mark.
 scroll_to_more: true
+
+
+# Automatically add list number to toc.
+toc_list_number: true
 
 
 ## DO NOT EDIT THE FOLLOWING SETTINGS
@@ -52,4 +61,4 @@ css: css
 images: images
 
 # Theme version
-version: 0.3.0rc5
+version: 0.4.0
