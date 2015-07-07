@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <title> os.path模块</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <link rel="stylesheet" href="../../wiki_res/GitHub2.css">
+        <link rel="stylesheet" href="../../wiki_res/prism.css">
+    </head>
+<body>
+	<div> >> <a href="../../index.html">wiki文档中心</a>  > <a href="../index.html">python文档</a>  > <a href="index.html">python模块学习</a> </div>
+    <div class="toc">
+<ul>
+<li><a href="#ospathabspathpath">os.path.abspath(path)</a></li>
+<li><a href="#ospathbasenamepath">os.path.basename(path)</a></li>
+<li><a href="#ospathcommonprefixlist">os.path.commonprefix(list)</a></li>
+<li><a href="#ospathdirnamepath">os.path.dirname(path)</a></li>
+<li><a href="#ospathexistspath">os.path.exists(path)</a></li>
+<li><a href="#ospathlexists">os.path.lexists</a></li>
+<li><a href="#ospathexpanduserpath">os.path.expanduser(path)</a></li>
+<li><a href="#ospathexpandvarspath">os.path.expandvars(path)</a></li>
+<li><a href="#ospathgetatimepath">os.path.getatime(path)</a></li>
+<li><a href="#ospathgetmtimepath">os.path.getmtime(path)</a></li>
+<li><a href="#ospathgetctimepath">os.path.getctime(path)</a></li>
+<li><a href="#ospathgetsizepath">os.path.getsize(path)</a></li>
+<li><a href="#ospathisabspath">os.path.isabs(path)</a></li>
+<li><a href="#ospathisfilepath">os.path.isfile(path)</a></li>
+<li><a href="#ospathisdirpath">os.path.isdir(path)</a></li>
+<li><a href="#ospathislinkpath">os.path.islink(path)</a></li>
+<li><a href="#ospathismountpath">os.path.ismount(path)</a></li>
+<li><a href="#ospathjoinpath1-path2">os.path.join(path1[, path2[, ...]])</a></li>
+<li><a href="#ospathnormcasepath">os.path.normcase(path)</a></li>
+<li><a href="#ospathnormpathpath">os.path.normpath(path)</a></li>
+<li><a href="#ospathrealpathpath">os.path.realpath(path)</a></li>
+<li><a href="#ospathrelpathpath-start">os.path.relpath(path[, start])</a></li>
+<li><a href="#ospathsamefilepath1-path2">os.path.samefile(path1, path2)</a></li>
+<li><a href="#ospathsameopenfilefp1-fp2">os.path.sameopenfile(fp1, fp2)</a></li>
+<li><a href="#ospathsamestatstat1-stat2">os.path.samestat(stat1, stat2)</a></li>
+<li><a href="#ospathsplitpath">os.path.split(path)</a></li>
+<li><a href="#ospathsplitdrivepath">os.path.splitdrive(path)</a></li>
+<li><a href="#ospathsplitextpath">os.path.splitext(path)</a></li>
+<li><a href="#ospathsplituncpath">os.path.splitunc(path)</a></li>
+<li><a href="#ospathwalkpath-visit-arg">os.path.walk(path, visit, arg)</a></li>
+<li><a href="#ospathsupports_unicode_filenames">os.path.supports_unicode_filenames</a></li>
+</ul>
+</div>
+
+    <h3 id="ospathabspathpath">os.path.abspath(path)</h3>
+<p>返回绝对路径。</p>
+<h3 id="ospathbasenamepath">os.path.basename(path)</h3>
+<p>获取文件名。</p>
+<pre class="line-numbers"><code class="language-python">os.path.basename('/home/swaroop/byte/code/poem.txt')
+# 结果 poem.txt</code></pre>
+
+<h3 id="ospathcommonprefixlist">os.path.commonprefix(list)</h3>
+<p>返回list(多个路径)中，所有path共有的最长的路径。</p>
+<h3 id="ospathdirnamepath">os.path.dirname(path)</h3>
+<p>获取路径名。</p>
+<pre class="line-numbers"><code class="language-python">os.path.dirname('/home/swaroop/byte/code/poem.txt')
+# 结果 /home/swaroop/byte/code</code></pre>
+
+<h3 id="ospathexistspath">os.path.exists(path)</h3>
+<p>路径存在则返回True,路径损坏返回False。</p>
+<h3 id="ospathlexists">os.path.lexists</h3>
+<p>路径存在则返回True,路径损坏也返回True。</p>
+<h3 id="ospathexpanduserpath">os.path.expanduser(path)</h3>
+<p>把path中包含的"~"和"~user"转换成用户目录。</p>
+<h3 id="ospathexpandvarspath">os.path.expandvars(path)</h3>
+<p>根据环境变量的值替换path中包含的”$name”和”${name}”</p>
+<h3 id="ospathgetatimepath">os.path.getatime(path)</h3>
+<p>返回最后一次进入此path的时间。</p>
+<h3 id="ospathgetmtimepath">os.path.getmtime(path)</h3>
+<p>返回在此path下最后一次修改的时间。</p>
+<h3 id="ospathgetctimepath">os.path.getctime(path)</h3>
+<p>返回path的大小。</p>
+<h3 id="ospathgetsizepath">os.path.getsize(path)</h3>
+<p>返回文件大小，如果文件不存在就返回错误。</p>
+<h3 id="ospathisabspath">os.path.isabs(path)</h3>
+<p>判断是否为绝对路径。</p>
+<h3 id="ospathisfilepath">os.path.isfile(path)</h3>
+<p>判断路径是否为文件。</p>
+<h3 id="ospathisdirpath">os.path.isdir(path)</h3>
+<p>判断路径是否为目录。</p>
+<h3 id="ospathislinkpath">os.path.islink(path)</h3>
+<p>判断路径是否为链接。</p>
+<h3 id="ospathismountpath">os.path.ismount(path)</h3>
+<p>判断路径是否为挂载点。</p>
+<h3 id="ospathjoinpath1-path2">os.path.join(path1[, path2[, ...]])</h3>
+<p>把目录和文件名合成一个路径。</p>
+<h3 id="ospathnormcasepath">os.path.normcase(path)</h3>
+<p>转换path的大小写和斜杠。</p>
+<h3 id="ospathnormpathpath">os.path.normpath(path)</h3>
+<p>规范path字符串形式。</p>
+<h3 id="ospathrealpathpath">os.path.realpath(path)</h3>
+<p>返回path的真实路径。</p>
+<h3 id="ospathrelpathpath-start">os.path.relpath(path[, start])</h3>
+<p>从start开始计算相对路径。</p>
+<h3 id="ospathsamefilepath1-path2">os.path.samefile(path1, path2)</h3>
+<p>判断目录或文件是否相同。</p>
+<h3 id="ospathsameopenfilefp1-fp2">os.path.sameopenfile(fp1, fp2)</h3>
+<p>判断fp1和fp2是否指向同一文件。</p>
+<h3 id="ospathsamestatstat1-stat2">os.path.samestat(stat1, stat2)</h3>
+<p>判断stat tuple stat1和stat2是否指向同一个文件。</p>
+<h3 id="ospathsplitpath">os.path.split(path)</h3>
+<p>把路径分割成dirname和basename，即目录名和文件名，返回一个元组。</p>
+<pre class="line-numbers"><code class="language-python">os.path.split('/home/swaroop/byte/code/poem.txt')
+# 结果 ('/home/swaroop/byte/code', 'poem.txt')</code></pre>
+
+<h3 id="ospathsplitdrivepath">os.path.splitdrive(path)</h3>
+<p>一般用在windows下，返回驱动器名和路径组成的元组。</p>
+<h3 id="ospathsplitextpath">os.path.splitext(path)</h3>
+<p>分割路径，返回路径名和文件扩展名的元组。</p>
+<pre class="line-numbers"><code class="language-python">os.path.splitext('/home/swaroop/byte/code/poem.txt')
+# 结果 ('/home/swaroop/byte/code/poem', '.txt')</code></pre>
+
+<h3 id="ospathsplituncpath">os.path.splitunc(path)</h3>
+<p>把路径分割为加载点与文件。</p>
+<h3 id="ospathwalkpath-visit-arg">os.path.walk(path, visit, arg)</h3>
+<p>遍历path，进入每个目录都调用visit函数，visit函数必须有3个参数(arg, dirname, names)，dirname表示当前目录的目录名，names代表当前目录下的所有文件名，args则为walk的第三个参数。</p>
+<h3 id="ospathsupports_unicode_filenames">os.path.supports_unicode_filenames</h3>
+<p>设置是否支持unicode路径名。</p>
+    <div>Powered by cwiki</div>
+    <script type="text/javascript" src="../../wiki_res/prism.js"></script>
+</body>
+</html>

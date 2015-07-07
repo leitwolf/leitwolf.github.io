@@ -116,6 +116,112 @@
           
           
             
+              <a class="post-title-link" href="/blog/2015/02/08/winxin-jssdk-src/">
+                微信JSSDK接入问题记录及源码
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          
+            发表于 2015-02-08
+          
+        </span>
+
+        
+          
+            <span class="post-category">
+              &nbsp; | &nbsp; 分类于
+              
+                <a href="/blog/categories/html5/">html5</a>
+
+                
+                
+
+              
+            </span>
+          
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/blog/2015/02/08/winxin-jssdk-src/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/08/winxin-jssdk-src/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    
+      <div class="post-body">
+
+        
+        
+
+        
+          
+            <p>今天把一个html5游戏的微信分享功能从第三方库切换到官方库了，<a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html">官方微信JSSDK</a>。<br>这其中碰到了一些问题，记录一下（服务端环境为PHP）：</p>
+<h3 id="1-_开启openssl功能">1. 开启openssl功能</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Warning: file_get_contents(https://graph.qq.com/user/xxxxx) [function.file-get-contents]: failed to open stream: No error <span class="keyword">in</span> /xxx/php.php on line <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>遇到这样的错误的，是因为没有开启<code>openssl</code>功能，可以在php.ini中把 <code>extension=php_openssl.dll</code>之前的<code>;</code>去掉，保存并重启（最好重启服务器）</p>
+<blockquote>
+<p>注意：<code>php.ini</code>的位置是在phpinfo中找的。</p>
+</blockquote>
+            <div class="post-more-link text-center">
+              <a class="btn" href="/blog/2015/02/08/winxin-jssdk-src/#more">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+        
+      </div>
+    
+
+    
+      <div class="post-footer">
+        
+          <div class="post-tags">
+            
+              <a href="/blog/tags/JSSDK/">
+                #JSSDK
+              </a>
+            
+              <a href="/blog/tags/微信/">
+                #微信
+              </a>
+            
+          </div>
+        
+
+        
+
+        
+        
+          <div class="post-eof"></div>
+        
+      </div>
+    
+  </div>
+
+
+  
+    
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/blog/2015/01/23/Python-Lex-Yacc/">
                 【译】Python Lex Yacc手册
               </a>
@@ -239,11 +345,11 @@
       <p class="site-description motion-element">一个谈论技术的地方</p>
       <div class="site-state motion-element">
         <div class="site-state-item site-state-posts">
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </div>
         <div class="site-state-item site-state-tags">
-            <span class="site-state-item-count">15</span>
+            <span class="site-state-item-count">16</span>
             <span class="site-state-item-name">标签</span>
         </div>
         <div class="site-state-item site-state-pages">
