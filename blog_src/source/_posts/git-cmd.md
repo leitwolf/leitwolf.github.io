@@ -25,7 +25,7 @@ git config --global user.name "yourname"
 #克隆到本地
 
 ```shell
-git clone git@github.com:yourname/repository.git dir
+git clone git@github.com:yourname/repository.git <dir>
 ```
 
 之后其它的操作都可以在vscode中完成了。
