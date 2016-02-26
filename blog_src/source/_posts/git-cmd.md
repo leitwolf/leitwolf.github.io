@@ -10,7 +10,7 @@ tags:
 
 ---
 
-现在已用vscode作为主力的代码编辑器了，它本身集成了git的大部分功能，只有加几个git命令就可以摆脱git图形客户端了。
+现在我已用vscode作为主力的代码编辑器了，它本身集成了git的大部分功能，只有加几个git命令就可以摆脱git图形客户端了。
 
 #首先是配置ssh-key
 教程地址:[https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/)
@@ -25,7 +25,13 @@ git config --global user.name "yourname"
 #克隆到本地
 
 ```shell
-git clone git@github.com:yourname/repository.git site
+git clone git@github.com:yourname/repository.git dir
 ```
 
 之后其它的操作都可以在vscode中完成了。
+
+具体为：
+
+1. 切换到git界面（点击左侧栏第三个图标）.
+2. 输入本次提交的message。点击“打勾”按钮。
+3. 点击左下角进行同步。
