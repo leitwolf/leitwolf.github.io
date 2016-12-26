@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="description" content="安装python版本管理工具pythonbrew" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../../../res/css/style.css" />
+    <!-- highlight start -->
+    <link rel="stylesheet" type="text/css" href="../../../../res/prismjs/prism.css" />
+    <script type="text/javascript" src="../../../../res/prismjs/prism.js"></script>
+    <!-- highlight end -->
+    <title>安装python版本管理工具pythonbrew - lonewolf的博客</title>
+</head>
+
+<body class="language-markup">
+    <div class="container">
+        <header id="header" class="header">
+            <div class="logo-wrapper">
+                <a href="../../../../" class="logo">Lonewolf</a>
+            </div>
+            <nav class="site-nav">
+                <ul id="menu" class="menu">
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../index.html">首页</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/archive/index.html">归档</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/category/index.html">分类</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/tag/index.html">标签</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/about/index.html">关于</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-navbar">
+                <div class="mobile-header">
+                    <div class="mobile-header-logo">
+                        <a href="../../../../" class="logo">Lonewolf</a>
+                    </div>
+                    <div class="mobile-header-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <nav class="mobile-menu">
+                    <a class="mobile-menu-item" href="../../../../index.html">首页</a>
+                    <a class="mobile-menu-item" href="../../../../content/archive/index.html">归档</a>
+<a class="mobile-menu-item" href="../../../../content/category/index.html">分类</a>
+<a class="mobile-menu-item" href="../../../../content/tag/index.html">标签</a>
+<a class="mobile-menu-item" href="../../../../content/about/index.html">关于</a>
+                </nav>
+            </div>
+        </header>
+        <main id="main" class="main">
+            <div class="content-wrapper">
+                <div id="content" class="content">
+                    <article class="post">
+                                                <header class="post-header">
+                            <h1 class="post-title">安装python版本管理工具pythonbrew</h1>
+                            <div class="post-meta">
+                                <span class="post-time">2015-07-07 20:40</span>
+                            </div>
+                        </header>
+                        <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <ol class="toc">
+			<ol class="toc-child">
+<li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#类库"><span class="toc-text">类库</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#安装python"><span class="toc-text">安装python</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#转换当前python环境"><span class="toc-text">转换当前python环境</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#列出已安装的python环境"><span class="toc-text">列出已安装的python环境</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#卸载python"><span class="toc-text">卸载python</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#清除下载的源文件及编译生成的临时文档"><span class="toc-text">清除下载的源文件及编译生成的临时文档</span></a>
+</li>
+</ol>
+        </ol>
+    </div>
+</div>
+                        <div class="post-content">
+                            <p>原链接地址：<a href="http://lonewolf.me/content/2015/07/07/install-pythonbrew.html">http://lonewolf.me/content/2015/07/07/install-pythonbrew.html</a><br />
+原创博客，转载请注明。</p>
+
+<hr />
+
+<p>鉴于python各版本的不兼容性，一直想安装一个python的版本管理工具。今天终于抽出空来实践了一把。</p>
+
+<p>我安装的是<a href="https://pypi.python.org/pypi/pythonbrew">pythonbrew</a>。</p>
+
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1>
+
+<pre class="line-numbers"><code class="language-shell">curl -kL http://xrl.us/pythonbrewinstall | bash
+</code></pre>
+
+<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1>
+
+<p>在<code>~/.bash_profile</code>中添加：</p>
+
+<pre class="line-numbers"><code class="language-shell">[[ -s $HOME/.pythonbrew/etc/bashrc ]] &amp;&amp; source $HOME/.pythonbrew/etc/bashrc
+</code></pre>
+
+<!-- more -->
+
+<h1 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h1>
+
+<pre class="line-numbers"><code class="language-shell">pythonbrew update
+</code></pre>
+
+<h1 id="类库"><a href="#类库" class="headerlink" title="类库"></a>类库</h1>
+
+<p>我是通过<code>homebrew</code>安装<code>openssl</code>的，但安装完并没有软链接，导致之后安装的python并不成功，所以要先调整一下。</p>
+
+<p>具体方法是执行一下以下命令：</p>
+
+<pre class="line-numbers"><code class="language-shell">brew link openssl
+</code></pre>
+
+<p>其它有相似情况的类库也照些处理。</p>
+
+<h1 id="安装python"><a href="#安装python" class="headerlink" title="安装python"></a>安装python</h1>
+
+<pre class="line-numbers"><code class="language-shell">pythonbrew install 2.7.10
+pythonbrew install 3.4.3
+</code></pre>
+
+<h1 id="转换当前python环境"><a href="#转换当前python环境" class="headerlink" title="转换当前python环境"></a>转换当前python环境</h1>
+
+<pre class="line-numbers"><code class="language-shell">pythonbrew switch 2.7.10
+</code></pre>
+
+<h1 id="列出已安装的python环境"><a href="#列出已安装的python环境" class="headerlink" title="列出已安装的python环境"></a>列出已安装的python环境</h1>
+
+<pre class="line-numbers"><code class="language-shell">pythonbrew list
+</code></pre>
+
+<h1 id="卸载python"><a href="#卸载python" class="headerlink" title="卸载python"></a>卸载python</h1>
+
+<pre class="line-numbers"><code class="language-shell">pythonbrew uninstall 2.7.10
+</code></pre>
+
+<h1 id="清除下载的源文件及编译生成的临时文档"><a href="#清除下载的源文件及编译生成的临时文档" class="headerlink" title="清除下载的源文件及编译生成的临时文档"></a>清除下载的源文件及编译生成的临时文档</h1>
+
+<pre class="line-numbers"><code class="language-shell">pythonbrew cleanup
+</code></pre>
+
+                        </div>
+                                                <footer class="post-footer">
+                            <div class="post-tags">
+	<a href="../../../../content/tag/pythonbrew/index.html">pythonbrew</a>
+</div>
+                            <nav class="post-nav" id="nav">
+                            </nav>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </main>
+        <script language="javascript">
+            var page_url="content/2015/07/07/install-pythonbrew.html";
+			var rootpath="../../../../";
+        </script>
+        <script type="text/javascript" src="../../../../content/data.js"></script>
+        <script type="text/javascript" src="../../../../res/js/nav.js"></script>
+
+        <footer id="footer" class="footer">
+            <div class="social-links">
+                <a href="mailto:wolf.pan@qq.com" class="iconfont icon-email" title="email"></a>
+                <a href="https://github.com/leitwolf" class="iconfont icon-github" title="github" target="_blank"></a>
+            </div>
+            <div class="copyright">
+                <span class="power-by">Powered by <a class="hexo-link" href="https://github.com/leitwolf/cwiki" target="_blank">cwiki</a></span>
+                <span class="theme-info">Theme - <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank">Even</a></span>
+                <span class="copyright-year">&copy;2015 - 2016
+                    <span class="heart"><i class="iconfont icon-heart"></i></span>
+                    <span class="author">Lonewolf</span>
+                </span>
+            </div>
+        </footer>
+
+        <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../res/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../../res/js/even.js"></script>
+</body>
+</html>

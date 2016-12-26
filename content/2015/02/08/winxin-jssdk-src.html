@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="description" content="微信JSSDK接入问题记录及源码" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../../../res/css/style.css" />
+    <!-- highlight start -->
+    <link rel="stylesheet" type="text/css" href="../../../../res/prismjs/prism.css" />
+    <script type="text/javascript" src="../../../../res/prismjs/prism.js"></script>
+    <!-- highlight end -->
+    <title>微信JSSDK接入问题记录及源码 - lonewolf的博客</title>
+</head>
+
+<body class="language-markup">
+    <div class="container">
+        <header id="header" class="header">
+            <div class="logo-wrapper">
+                <a href="../../../../" class="logo">Lonewolf</a>
+            </div>
+            <nav class="site-nav">
+                <ul id="menu" class="menu">
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../index.html">首页</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/archive/index.html">归档</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/category/index.html">分类</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/tag/index.html">标签</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/about/index.html">关于</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-navbar">
+                <div class="mobile-header">
+                    <div class="mobile-header-logo">
+                        <a href="../../../../" class="logo">Lonewolf</a>
+                    </div>
+                    <div class="mobile-header-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <nav class="mobile-menu">
+                    <a class="mobile-menu-item" href="../../../../index.html">首页</a>
+                    <a class="mobile-menu-item" href="../../../../content/archive/index.html">归档</a>
+<a class="mobile-menu-item" href="../../../../content/category/index.html">分类</a>
+<a class="mobile-menu-item" href="../../../../content/tag/index.html">标签</a>
+<a class="mobile-menu-item" href="../../../../content/about/index.html">关于</a>
+                </nav>
+            </div>
+        </header>
+        <main id="main" class="main">
+            <div class="content-wrapper">
+                <div id="content" class="content">
+                    <article class="post">
+                                                <header class="post-header">
+                            <h1 class="post-title">微信JSSDK接入问题记录及源码</h1>
+                            <div class="post-meta">
+                                <span class="post-time">2015-02-08 10:00</span>
+                            </div>
+                        </header>
+                        <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <ol class="toc">
+			<ol class="toc-child">
+<li class="toc-item toc-level-3"><a class="toc-link" href="#1. 开启openssl功能"><span class="toc-text">1. 开启openssl功能</span></a>
+</li>
+<li class="toc-item toc-level-3"><a class="toc-link" href="#2. encodeURIComponent(url)"><span class="toc-text">2. encodeURIComponent(url)</span></a>
+</li>
+</ol>
+        </ol>
+    </div>
+</div>
+                        <div class="post-content">
+                            <p>原链接地址：<a href="http://lonewolf.me/content/2015/02/08/winxin-jssdk-src.html">http://lonewolf.me/content/2015/02/08/winxin-jssdk-src.html</a><br />
+原创博客，转载请注明。</p>
+
+<hr />
+
+<p>今天把一个html5游戏的微信分享功能从第三方库切换到官方库了，<a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html">官方微信JSSDK</a>。
+这其中碰到了一些问题，记录一下（服务端环境为PHP）：</p>
+
+<h3 id="1. 开启openssl功能"><a href="#1. 开启openssl功能" class="headerlink" title="1. 开启openssl功能"></a>1. 开启openssl功能</h3>
+
+<pre class="line-numbers"><code class="language-python">Warning: file_get_contents(https://graph.qq.com/user/xxxxx) [function.file-get-contents]: failed to open stream: No error in /xxx/php.php on line 2
+</code></pre>
+
+<p>遇到这样的错误的，是因为没有开启<code>openssl</code>功能，可以在php.ini中把 <code>extension=php_openssl.dll</code>之前的<code>;</code>去掉，保存并重启（最好重启服务器）
+&gt; 注意：<code>php.ini</code>的位置是在phpinfo中找的。</p>
+
+<!--more-->
+
+<h3 id="2. encodeURIComponent(url)"><a href="#2. encodeURIComponent(url)" class="headerlink" title="2. encodeURIComponent(url)"></a>2. encodeURIComponent(url)</h3>
+
+<p>js端的要记得把当前页面的url编码，不然送给服务器的参数可能不对，最后导致签名出错。</p>
+
+<h4>最后附上相关的源码，包括服务端和javascript：</h4>
+
+<ul>
+<li>客户端</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-javascript">/**
+ * Author: lonewolf
+ * Date: 2015-02-08 13:48:43
+ */
+// 微信分享的数据
+var wxData = {
+    title : '好玩的游戏！',
+    desc : '大家快来玩!',
+    link : 'http://xxx',
+    imgUrl : 'http://xxx.png',
+    type: '', 
+    dataUrl: '', 
+    success: function () {
+        //分享成功
+       //do something!
+    }
+};
+// 配置数据
+wxConfigData={
+    debug: true, //调试的时候最好设为true，它每一步都会alert数据出来，让你知道出了什么问题
+    appId: 'xxx',
+    timestamp: 1423367602, //随便填写一串数字
+    nonceStr: 'sMADlDUaGt6DsEc6', //随便一字符串
+    signature: '', //**这个要到服务器获取**
+    jsApiList: [ //用到的功能，自定义
+    'checkJsApi',
+    'onMenuShareTimeline',
+    'onMenuShareAppMessage',
+    'onMenuShareQQ',
+    'onMenuShareWeibo'
+    ] 
+}
+// 获取签名
+function wxGetSign () {
+    var data1={};
+    data1[&quot;timestamp&quot;]=wxConfigData[&quot;timestamp&quot;];
+    data1[&quot;nonceStr&quot;]=wxConfigData[&quot;nonceStr&quot;];
+    data1[&quot;url&quot;]=encodeURIComponent(location.href.split('#')[0]);
+    // alert(data1[&quot;url&quot;]);
+    // 自己找个ajax库
+    ajax.post(&quot;wxGetSign.php?ran=&quot;+Math.random(), data1, function (data) {
+        // 返回{sign:xxx}
+        // alert(data);
+        data=eval(&quot;(&quot;+data+&quot;)&quot;);
+        if(data[&quot;sign&quot;])
+        {
+            // 获取签名成功，初始化分享
+            wxConfigData[&quot;signature&quot;]=data[&quot;sign&quot;];
+            wxInit();
+        }
+    });
+}
+// 初始化，已经获得签名
+function wxInit () {
+    // 配置参数
+    wx.config(wxConfigData);
+    // 分享
+    wx.ready(function(){
+        addWeixinShareListening();
+    });
+    wx.error(function(res){
+        // alert(res);
+    });
+}
+// 分享绑定
+function addWeixinShareListening () {
+    wx.onMenuShareTimeline(wxData);
+    wx.onMenuShareAppMessage(wxData);
+    wx.onMenuShareQQ(wxData);
+    wx.onMenuShareWeibo(wxData);
+}
+
+//执行，获取签名
+wxGetSign();
+</code></pre>
+
+<p>相关的参数改一改，放到页面中就可以了，也可保存为一个js文件。</p>
+
+<ul>
+<li>服务端</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-php">&lt;?php
+/*
+因为获取的access_token以及jsapi_ticket都有时间限制（7200秒后失效），且调用接口的次数有限制，所以我们得把得到的access_token和jsapi_ticket缓存到一个文件里，每次请求都检查是否已过期。
+*/
+
+//设置时区
+date_default_timezone_set('Asia/ShangHai');
+//session
+session_start();
+$returnObj = array(&quot;sign&quot; =&gt; &quot;&quot;);
+// 常量
+$appId=&quot;xxx&quot;;
+$appSecret=&quot;xxx&quot;;
+
+$timestamp = $_POST[&quot;timestamp&quot;];
+$nonceStr = $_POST[&quot;nonceStr&quot;];
+$url = $_POST[&quot;url&quot;];
+
+if ($timestamp&amp;&amp;$nonceStr&amp;&amp;$url) {
+    // 获取access_token和jsapi_ticket
+    $access_token=&quot;&quot;;
+    $jsapi_ticket=&quot;&quot;;
+    // 保存到文件sign.txt
+    $filename=&quot;sign.txt&quot;;
+    $time=time();
+    // 先查找本地有没有保存
+    if (file_exists($filename)) {
+        $str=file_get_contents($filename);
+        $obj=json_decode($str,true);
+        if ($obj&amp;&amp;$obj[&quot;access_token&quot;]&amp;&amp;$obj[&quot;jsapi_ticket&quot;]&amp;&amp;$obj[&quot;time&quot;]) {
+            $lastTime=intval($obj[&quot;time&quot;]);
+            // 标准的是7200，要少一点
+            if ($time-$lastTime&lt;7100) {
+                $access_token=$obj[&quot;access_token&quot;];
+                $jsapi_ticket=$obj[&quot;jsapi_ticket&quot;];
+            }
+        }
+    }
+    if ($access_token==&quot;&quot;) {
+        // 如果第一次或已过期则重新获取
+        $returnObj[&quot;re&quot;]=1; //这个只是测试用，看看是不是新请求
+        // 获取access_token
+        $tokenUrl=&quot;https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid={$appId}&amp;secret={$appSecret}&quot;;
+        $str=file_get_contents($tokenUrl);
+        // $returnObj[&quot;token_data&quot;]=$str;
+        $obj=json_decode($str,true);
+        if ($obj&amp;&amp;$obj[&quot;access_token&quot;]) {
+            $access_token=$obj[&quot;access_token&quot;];
+            // 获取jsapi_ticket
+            $ticketUrl=&quot;https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token={$access_token}&amp;type=jsapi&quot;;
+            $str=file_get_contents($ticketUrl);
+            // $returnObj[&quot;ticket_data&quot;]=$str;
+            $obj=json_decode($str,true);
+            if ($obj&amp;&amp;$obj[&quot;errcode&quot;]==0&amp;&amp;$obj[&quot;ticket&quot;]) {
+                $jsapi_ticket=$obj[&quot;ticket&quot;];
+                // 保存文件
+                $data=array(&quot;access_token&quot;=&gt;$access_token,&quot;jsapi_ticket&quot;=&gt;$jsapi_ticket,&quot;time&quot;=&gt;$time);
+                $data=json_encode($data);
+                file_put_contents($filename, $data);
+            }
+            else
+            {
+                $returnObj[&quot;error&quot;]=&quot;wrong ticket&quot;;
+            }
+        }
+        else
+        {
+            $returnObj[&quot;error&quot;]=&quot;wrong access_token&quot;;
+        }
+    }
+    if ($access_token&amp;&amp;$jsapi_ticket) {
+        // test
+        // $returnObj[&quot;access_token&quot;]=$access_token;
+        // $returnObj[&quot;jsapi_ticket&quot;]=$jsapi_ticket;
+        // 签名算法
+        $str=&quot;jsapi_ticket={$jsapi_ticket}&amp;noncestr={$nonceStr}&amp;timestamp={$timestamp}&amp;url={$url}&quot;;
+        // $returnObj[&quot;signstr&quot;]=$str;
+        $sign=sha1($str);
+        $returnObj[&quot;sign&quot;]=$sign;
+    }
+}
+echo json_encode($returnObj);
+?&gt;
+</code></pre>
+
+<p>至此，整个过程就算完了。</p>
+
+                        </div>
+                                                <footer class="post-footer">
+                            <div class="post-tags">
+	<a href="../../../../content/tag/微信/index.html">微信</a>
+	<a href="../../../../content/tag/JSSDK/index.html">JSSDK</a>
+</div>
+                            <nav class="post-nav" id="nav">
+                            </nav>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </main>
+        <script language="javascript">
+            var page_url="content/2015/02/08/winxin-jssdk-src.html";
+			var rootpath="../../../../";
+        </script>
+        <script type="text/javascript" src="../../../../content/data.js"></script>
+        <script type="text/javascript" src="../../../../res/js/nav.js"></script>
+
+        <footer id="footer" class="footer">
+            <div class="social-links">
+                <a href="mailto:wolf.pan@qq.com" class="iconfont icon-email" title="email"></a>
+                <a href="https://github.com/leitwolf" class="iconfont icon-github" title="github" target="_blank"></a>
+            </div>
+            <div class="copyright">
+                <span class="power-by">Powered by <a class="hexo-link" href="https://github.com/leitwolf/cwiki" target="_blank">cwiki</a></span>
+                <span class="theme-info">Theme - <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank">Even</a></span>
+                <span class="copyright-year">&copy;2015 - 2016
+                    <span class="heart"><i class="iconfont icon-heart"></i></span>
+                    <span class="author">Lonewolf</span>
+                </span>
+            </div>
+        </footer>
+
+        <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../res/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../../res/js/even.js"></script>
+</body>
+</html>

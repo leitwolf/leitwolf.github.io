@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="description" content="python命名规范" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../../../res/css/style.css" />
+    <!-- highlight start -->
+    <link rel="stylesheet" type="text/css" href="../../../../res/prismjs/prism.css" />
+    <script type="text/javascript" src="../../../../res/prismjs/prism.js"></script>
+    <!-- highlight end -->
+    <title>python命名规范 - lonewolf的博客</title>
+</head>
+
+<body class="language-markup">
+    <div class="container">
+        <header id="header" class="header">
+            <div class="logo-wrapper">
+                <a href="../../../../" class="logo">Lonewolf</a>
+            </div>
+            <nav class="site-nav">
+                <ul id="menu" class="menu">
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../index.html">首页</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/archive/index.html">归档</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/category/index.html">分类</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/tag/index.html">标签</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/about/index.html">关于</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-navbar">
+                <div class="mobile-header">
+                    <div class="mobile-header-logo">
+                        <a href="../../../../" class="logo">Lonewolf</a>
+                    </div>
+                    <div class="mobile-header-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <nav class="mobile-menu">
+                    <a class="mobile-menu-item" href="../../../../index.html">首页</a>
+                    <a class="mobile-menu-item" href="../../../../content/archive/index.html">归档</a>
+<a class="mobile-menu-item" href="../../../../content/category/index.html">分类</a>
+<a class="mobile-menu-item" href="../../../../content/tag/index.html">标签</a>
+<a class="mobile-menu-item" href="../../../../content/about/index.html">关于</a>
+                </nav>
+            </div>
+        </header>
+        <main id="main" class="main">
+            <div class="content-wrapper">
+                <div id="content" class="content">
+                    <article class="post">
+                                                <header class="post-header">
+                            <h1 class="post-title">python命名规范</h1>
+                            <div class="post-meta">
+                                <span class="post-time">2015-04-03 20:40</span>
+                            </div>
+                        </header>
+                        <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <ol class="toc">
+			<ol class="toc-child">
+<li class="toc-item toc-level-1"><a class="toc-link" href="#常量"><span class="toc-text">常量</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#变量"><span class="toc-text">变量</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#类"><span class="toc-text">类</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#模块"><span class="toc-text">模块</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#包"><span class="toc-text">包</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#私有"><span class="toc-text">私有</span></a>
+</li>
+</ol>
+        </ol>
+    </div>
+</div>
+                        <div class="post-content">
+                            <p>原链接地址：<a href="http://lonewolf.me/content/2015/04/03/python-name.html">http://lonewolf.me/content/2015/04/03/python-name.html</a><br />
+原创博客，转载请注明。</p>
+
+<hr />
+
+<p>简要记一下python的命名规范。</p>
+
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1>
+
+<p>常量名所有字母大写，由下划线连接各个单词。</p>
+
+<pre class="line-numbers"><code class="language-python">WHITE = 0xFFFFFF
+THIS_IS_A_CONSTANT = 1
+</code></pre>
+
+<!-- more -->
+
+<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1>
+
+<p>变量名全部小写，由下划线连接各个单词。</p>
+
+<pre class="line-numbers"><code class="language-python">color = &quot;red&quot;
+this_is_a_var = 10
+</code></pre>
+
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1>
+
+<p>与变量命名相同，由小写字母组成，并由下划线连接各个单词。</p>
+
+<pre class="line-numbers"><code class="language-python">def count():
+    pass
+
+def set_function_name(name):
+    pass
+</code></pre>
+
+<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1>
+
+<p>驼峰，首字母大写。</p>
+
+<pre class="line-numbers"><code class="language-python">class ThisIsAClass(object):
+    pass
+</code></pre>
+
+<h1 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h1>
+
+<p>小写，字母间以下划线连接。</p>
+
+<pre class="line-numbers"><code class="language-python">module.py
+my_module.py
+</code></pre>
+
+<h1 id="包"><a href="#包" class="headerlink" title="包"></a>包</h1>
+
+<p>与模块一样。</p>
+
+<h1 id="私有"><a href="#私有" class="headerlink" title="私有"></a>私有</h1>
+
+<p>在之前的基础上加上前导_(下划线)。</p>
+
+<pre class="line-numbers"><code class="language-python">_internal_color = &quot;red&quot;
+
+def _internal_function(name):
+    pass
+
+_internal_module.py
+</code></pre>
+
+<blockquote>
+<p>最后要注意：
+不要以__doc__（前导后缀双下划线）命名，这是系统自己用的。</p>
+</blockquote>
+
+                        </div>
+                                                <footer class="post-footer">
+                            <div class="post-tags">
+	<a href="../../../../content/tag/python命名规范/index.html">python命名规范</a>
+</div>
+                            <nav class="post-nav" id="nav">
+                            </nav>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </main>
+        <script language="javascript">
+            var page_url="content/2015/04/03/python-name.html";
+			var rootpath="../../../../";
+        </script>
+        <script type="text/javascript" src="../../../../content/data.js"></script>
+        <script type="text/javascript" src="../../../../res/js/nav.js"></script>
+
+        <footer id="footer" class="footer">
+            <div class="social-links">
+                <a href="mailto:wolf.pan@qq.com" class="iconfont icon-email" title="email"></a>
+                <a href="https://github.com/leitwolf" class="iconfont icon-github" title="github" target="_blank"></a>
+            </div>
+            <div class="copyright">
+                <span class="power-by">Powered by <a class="hexo-link" href="https://github.com/leitwolf/cwiki" target="_blank">cwiki</a></span>
+                <span class="theme-info">Theme - <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank">Even</a></span>
+                <span class="copyright-year">&copy;2015 - 2016
+                    <span class="heart"><i class="iconfont icon-heart"></i></span>
+                    <span class="author">Lonewolf</span>
+                </span>
+            </div>
+        </footer>
+
+        <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../res/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../../res/js/even.js"></script>
+</body>
+</html>

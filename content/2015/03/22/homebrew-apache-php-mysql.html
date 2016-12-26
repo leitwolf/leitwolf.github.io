@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="description" content="MAC下用homebrew安装及配置apache、php和mysql" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../../../res/css/style.css" />
+    <!-- highlight start -->
+    <link rel="stylesheet" type="text/css" href="../../../../res/prismjs/prism.css" />
+    <script type="text/javascript" src="../../../../res/prismjs/prism.js"></script>
+    <!-- highlight end -->
+    <title>MAC下用homebrew安装及配置apache、php和mysql - lonewolf的博客</title>
+</head>
+
+<body class="language-markup">
+    <div class="container">
+        <header id="header" class="header">
+            <div class="logo-wrapper">
+                <a href="../../../../" class="logo">Lonewolf</a>
+            </div>
+            <nav class="site-nav">
+                <ul id="menu" class="menu">
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../index.html">首页</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/archive/index.html">归档</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/category/index.html">分类</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/tag/index.html">标签</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/about/index.html">关于</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-navbar">
+                <div class="mobile-header">
+                    <div class="mobile-header-logo">
+                        <a href="../../../../" class="logo">Lonewolf</a>
+                    </div>
+                    <div class="mobile-header-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <nav class="mobile-menu">
+                    <a class="mobile-menu-item" href="../../../../index.html">首页</a>
+                    <a class="mobile-menu-item" href="../../../../content/archive/index.html">归档</a>
+<a class="mobile-menu-item" href="../../../../content/category/index.html">分类</a>
+<a class="mobile-menu-item" href="../../../../content/tag/index.html">标签</a>
+<a class="mobile-menu-item" href="../../../../content/about/index.html">关于</a>
+                </nav>
+            </div>
+        </header>
+        <main id="main" class="main">
+            <div class="content-wrapper">
+                <div id="content" class="content">
+                    <article class="post">
+                                                <header class="post-header">
+                            <h1 class="post-title">MAC下用homebrew安装及配置apache、php和mysql</h1>
+                            <div class="post-meta">
+                                <span class="post-time">2015-03-22 20:07</span>
+                            </div>
+                        </header>
+                        <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <ol class="toc">
+			<ol class="toc-child">
+<li class="toc-item toc-level-1"><a class="toc-link" href="#安装apache php mysql"><span class="toc-text">安装apache php mysql</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#配置apache"><span class="toc-text">配置apache</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#配置mysql"><span class="toc-text">配置mysql</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#homebrew-cask"><span class="toc-text">homebrew-cask</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#LaunchRocket"><span class="toc-text">LaunchRocket</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#其它工具"><span class="toc-text">其它工具</span></a>
+<ol class="toc-child">
+<li class="toc-item toc-level-3"><a class="toc-link" href="#1、cakebrew"><span class="toc-text">1、cakebrew</span></a>
+</li>
+<li class="toc-item toc-level-3"><a class="toc-link" href="#2、adminer"><span class="toc-text">2、adminer</span></a>
+</li>
+</ol>
+</li>
+</ol>
+        </ol>
+    </div>
+</div>
+                        <div class="post-content">
+                            <p>原链接地址：<a href="http://lonewolf.me/content/2015/03/22/homebrew-apache-php-mysql.html">http://lonewolf.me/content/2015/03/22/homebrew-apache-php-mysql.html</a><br />
+原创博客，转载请注明。</p>
+
+<hr />
+
+<p>我们用到php运行环境的时候总喜欢用集成包，其实在mac下，用homebrew也可以很快的安装这些东西，配置也很简单。</p>
+
+<p>#homebrew
+<a href="http://brew.sh/index_zh-cn.html">homebrew</a>是mac下的一个包安装管理工具，使用非常简单方便。</p>
+
+<ul>
+<li>安装homebrew</li>
+</ul>
+
+<p>在终端中执行：</p>
+
+<pre class="line-numbers"><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+
+<p>这样就安装好homebrew了。</p>
+
+<ul>
+<li>安装命令行软件</li>
+</ul>
+
+<p>如安装wget，则执行：</p>
+
+<pre class="line-numbers"><code class="language-shell">brew install wget
+</code></pre>
+
+<p>其它具体的使用方法可自行翻阅 <a href="http://brew.sh/index_zh-cn.html">官网（中文）</a>。
+<!-- more --></p>
+
+<h1 id="安装apache php mysql"><a href="#安装apache php mysql" class="headerlink" title="安装apache php mysql"></a>安装apache php mysql</h1>
+
+<p>因为apache和php不在默认的仓库里，所以我们要先添加其所在的仓库。</p>
+
+<pre class="line-numbers"><code class="language-shell">brew tap homebrew/apache
+brew tap homebrew/php
+</code></pre>
+
+<p>之后就是正常的安装了，安装过程homebrew会为你自行处理各种依赖。</p>
+
+<pre class="line-numbers"><code class="language-shell">brew install httpd24
+brew install php53
+brew install mysql
+</code></pre>
+
+<blockquote>
+<p>注意：apache在homebrew中的名字为httpd。
+这些都可以指定安装的版本，这里我安装apache2.4，php5.3，mysql是最新版。
+<strong>以下的路径说明都是以这个为基准</strong>，请自行修改为你所下载的版本。</p>
+</blockquote>
+
+<h1 id="配置apache"><a href="#配置apache" class="headerlink" title="配置apache"></a>配置apache</h1>
+
+<p>配置文件路径为<code>/usr/local/etc/apache2/2.4/httpd.conf</code>，以下的配置都需要在相应的地方修改。</p>
+
+<ul>
+<li>添加php模块</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-ini"># ====php module====
+LoadModule php5_module /usr/local/Cellar/php53/5.3.29/libexec/apache2/libphp5.so
+&lt;IfModule mod_php5.c&gt;
+
+    AddType application/x-httpd-php .php
+    AddType application/x-httpd-php-source .phps
+
+    &lt;IfModule mod_dir.c&gt;
+        DirectoryIndex index.html index.php
+    &lt;/IfModule&gt;
+&lt;/IfModule&gt;
+</code></pre>
+
+<ul>
+<li>修改监听端口
+默认的端口为8080，我们改为80：</li>
+</ul>
+
+<pre class="line-numbers"><code>Listen 80
+</code></pre>
+
+<ul>
+<li>修改root根目录</li>
+</ul>
+
+<pre class="line-numbers"><code>DocumentRoot &quot;/Users/lonewolf/Public/dev/php/app&quot;
+&lt;Directory &quot;/Users/lonewolf/Public/dev/php/app&quot;&gt;
+</code></pre>
+
+<blockquote>
+<p>请自行修改为你的目录</p>
+</blockquote>
+
+<h1 id="配置mysql"><a href="#配置mysql" class="headerlink" title="配置mysql"></a>配置mysql</h1>
+
+<p>使用默认的mysql配置启动时，会占用<strong>434M</strong>的内存，这个占用太多了，所以要修改一下。
+配置路径为<code>/usr/local/Cellar/mysql/5.6.23/my.cnf</code>。</p>
+
+<pre class="line-numbers"><code class="language-ini"># ========
+
+skip-external-locking
+key_buffer = 16M
+max_allowed_packet = 1M
+table_open_cache = 64
+sort_buffer_size = 512K
+net_buffer_length = 8K
+read_buffer_size = 256K
+read_rnd_buffer_size = 512K
+myisam_sort_buffer_size = 8M
+
+# ========
+</code></pre>
+
+<p>这样启动之后就下降到<strong>100M</strong>以下了。</p>
+
+<p>到这里，我们的安装和配置就完成了，不过有一点很不好，就是启动和停止这些服务都需要在命令行下输入，有没有图形化的管理界面呢？
+有的，答案是<code>LaunchRocket</code>，说这个之前我们先来了解一下另一个工具<code>homebrew-cask</code>。</p>
+
+<h1 id="homebrew-cask"><a href="#homebrew-cask" class="headerlink" title="homebrew-cask"></a>homebrew-cask</h1>
+
+<p><a href="http://caskroom.io/">homebrew-cask</a>是homebrew的一个扩展，用于安装图形界面mac程序，如<code>google chrome</code>、<code>QQ</code>等等。</p>
+
+<ul>
+<li>安装</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-shell">brew install caskroom/cask/brew-cask
+</code></pre>
+
+<ul>
+<li>使用</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-shell">brew cask install google-chrome
+</code></pre>
+
+<p>具体的功能请翻阅官网。</p>
+
+<h1 id="LaunchRocket"><a href="#LaunchRocket" class="headerlink" title="LaunchRocket"></a>LaunchRocket</h1>
+
+<p><a href="https://github.com/jimbojsb/launchrocket">LaunchRocket</a>是管理homebrew所安装应用的一个管理器，它在<strong>系统设置</strong>中。
+安装命令：</p>
+
+<pre class="line-numbers"><code class="language-shell">brew cask install launchrocket
+</code></pre>
+
+<p>界面如下：
+<img src="../../../../file/pic/homebrew-apache-php-mysql-1.png" alt="launchrocket" />
+&gt; 不知道为什么，<code>httpd</code>需要选<code>As Root</code>才能真正运行起来。</p>
+
+<p>到此，安装、配置、运行各方面都完成了。</p>
+
+<h1 id="其它工具"><a href="#其它工具" class="headerlink" title="其它工具"></a>其它工具</h1>
+
+<p>最后介绍两个有用的工具：</p>
+
+<h3 id="1、cakebrew"><a href="#1、cakebrew" class="headerlink" title="1、cakebrew"></a>1、cakebrew</h3>
+
+<p><a href="https://www.cakebrew.com">cakebrew</a>是图形化管理homebrew的一个软件，也就是让你不用敲命令即可安装软件。
+<img src="https://www.cakebrew.com/assets/img/app-bg.png" alt="cakebrew" /></p>
+
+<h3 id="2、adminer"><a href="#2、adminer" class="headerlink" title="2、adminer"></a>2、adminer</h3>
+
+<p><a href="http://www.adminer.org/">adminer</a>是用php写的一个数据库管理工具，可以管理 MySQL, PostgreSQL, SQLite, MS SQL, Oracle, MongoDB等类型数据库，而且还是<strong>单文件</strong>，安装部署非常方便，支持多种语言。
+<img src="http://www.adminer.org/static/screenshots/db.png" alt="adminer" /></p>
+
+                        </div>
+                                                <footer class="post-footer">
+                            <div class="post-tags">
+	<a href="../../../../content/tag/homebrew/index.html">homebrew</a>
+	<a href="../../../../content/tag/apache/index.html">apache</a>
+	<a href="../../../../content/tag/php/index.html">php</a>
+	<a href="../../../../content/tag/mysql/index.html">mysql</a>
+</div>
+                            <nav class="post-nav" id="nav">
+                            </nav>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </main>
+        <script language="javascript">
+            var page_url="content/2015/03/22/homebrew-apache-php-mysql.html";
+			var rootpath="../../../../";
+        </script>
+        <script type="text/javascript" src="../../../../content/data.js"></script>
+        <script type="text/javascript" src="../../../../res/js/nav.js"></script>
+
+        <footer id="footer" class="footer">
+            <div class="social-links">
+                <a href="mailto:wolf.pan@qq.com" class="iconfont icon-email" title="email"></a>
+                <a href="https://github.com/leitwolf" class="iconfont icon-github" title="github" target="_blank"></a>
+            </div>
+            <div class="copyright">
+                <span class="power-by">Powered by <a class="hexo-link" href="https://github.com/leitwolf/cwiki" target="_blank">cwiki</a></span>
+                <span class="theme-info">Theme - <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank">Even</a></span>
+                <span class="copyright-year">&copy;2015 - 2016
+                    <span class="heart"><i class="iconfont icon-heart"></i></span>
+                    <span class="author">Lonewolf</span>
+                </span>
+            </div>
+        </footer>
+
+        <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../res/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../../res/js/even.js"></script>
+</body>
+</html>

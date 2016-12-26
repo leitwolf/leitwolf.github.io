@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="description" content="Go学习笔记：基础一" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../../../res/css/style.css" />
+    <!-- highlight start -->
+    <link rel="stylesheet" type="text/css" href="../../../../res/prismjs/prism.css" />
+    <script type="text/javascript" src="../../../../res/prismjs/prism.js"></script>
+    <!-- highlight end -->
+    <title>Go学习笔记：基础一 - lonewolf的博客</title>
+</head>
+
+<body class="language-markup">
+    <div class="container">
+        <header id="header" class="header">
+            <div class="logo-wrapper">
+                <a href="../../../../" class="logo">Lonewolf</a>
+            </div>
+            <nav class="site-nav">
+                <ul id="menu" class="menu">
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../index.html">首页</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/archive/index.html">归档</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/category/index.html">分类</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/tag/index.html">标签</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/about/index.html">关于</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-navbar">
+                <div class="mobile-header">
+                    <div class="mobile-header-logo">
+                        <a href="../../../../" class="logo">Lonewolf</a>
+                    </div>
+                    <div class="mobile-header-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <nav class="mobile-menu">
+                    <a class="mobile-menu-item" href="../../../../index.html">首页</a>
+                    <a class="mobile-menu-item" href="../../../../content/archive/index.html">归档</a>
+<a class="mobile-menu-item" href="../../../../content/category/index.html">分类</a>
+<a class="mobile-menu-item" href="../../../../content/tag/index.html">标签</a>
+<a class="mobile-menu-item" href="../../../../content/about/index.html">关于</a>
+                </nav>
+            </div>
+        </header>
+        <main id="main" class="main">
+            <div class="content-wrapper">
+                <div id="content" class="content">
+                    <article class="post">
+                                                <header class="post-header">
+                            <h1 class="post-title">Go学习笔记：基础一</h1>
+                            <div class="post-meta">
+                                <span class="post-time">2015-02-14 10:00</span>
+                            </div>
+                        </header>
+                        <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <ol class="toc">
+			<ol class="toc-child">
+<li class="toc-item toc-level-3"><a class="toc-link" href="#包"><span class="toc-text">包</span></a>
+</li>
+<li class="toc-item toc-level-3"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a>
+</li>
+<li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-text">变量</span></a>
+</li>
+<li class="toc-item toc-level-3"><a class="toc-link" href="#常量"><span class="toc-text">常量</span></a>
+</li>
+<li class="toc-item toc-level-3"><a class="toc-link" href="#基本类型"><span class="toc-text">基本类型</span></a>
+</li>
+<li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-text">注释</span></a>
+</li>
+</ol>
+        </ol>
+    </div>
+</div>
+                        <div class="post-content">
+                            <p>原链接地址：<a href="http://lonewolf.me/content/2015/02/14/go-study-part1.html">http://lonewolf.me/content/2015/02/14/go-study-part1.html</a><br />
+原创博客，转载请注明。</p>
+
+<hr />
+
+<p>最近在学习Go语言，按照<a href="http://tour.golangtc.com/list">学习指南</a>学的，现把学习过程记录一下。</p>
+
+<p>这一章学习包、变量和函数。</p>
+
+<h3 id="包"><a href="#包" class="headerlink" title="包"></a>包</h3>
+
+<p>包定义都是在第一行，如：</p>
+
+<pre class="line-numbers"><code class="language-go">package main
+</code></pre>
+
+<p>导入别的包则用<code>import</code>，如：</p>
+
+<pre class="line-numbers"><code class="language-go">import &quot;fmt&quot;
+import &quot;math&quot;
+</code></pre>
+
+<p>也可以这样：</p>
+
+<pre class="line-numbers"><code class="language-go">import (
+    &quot;fmt&quot;
+    &quot;math/rand&quot;
+)
+</code></pre>
+
+<p><strong>如果你引入了一个包，但没有使用它，是没法编译通过的</strong>，出错信息如下：
+<code>imported and not used: &quot;math&quot;</code>
+因为Go语言是静态编译，引入没有使用的包会增大最终执行文件的体积，所以Go强制这样做。</p>
+
+<p>Go语言提供了很多的标准包，具体可以看看<a href="http://mygodoc.oschina.mopaas.com/">Go库文档（中文）</a>。
+&gt;Go语言编译运行时（<code>go run xxx.go</code>），该文件里必须有main包和main函数才能运行。
+&gt;
+&gt;Go语言语句结尾都没有分号<code>;</code>。</p>
+
+<!--more-->
+
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3>
+
+<p>函数以<code>func</code>关键字定义，如下：</p>
+
+<pre class="line-numbers"><code class="language-go">func add(x int, y int) int {
+    return x + y
+}
+
+func swap(x, y string) (string, string) {
+    return y, x
+}
+
+func split(sum int) (x, y int) {
+    x = sum * 4 / 9
+    y = sum - x
+    return
+}
+
+func main() {
+    fmt.Println(add(42, 13))
+    a, b := swap(&quot;hello&quot;, &quot;world&quot;)
+    fmt.Println(a, b)
+    fmt.Println(split(17))
+}
+</code></pre>
+
+<ul>
+<li>参数的类型声明是放在变量名后面的。</li>
+<li>如果参数类型一样，除了最后一个要声明类型，之前的都可以省略。</li>
+<li>返回值的类型放在<code>)</code>和<code>{</code>之间，如果没有返回值，则为空。</li>
+<li>可以返回多个值，这时候返回的类型要用<code>(</code><code>)</code>包含起来。</li>
+<li>返回值可以被命名，<code>return</code>直接返回。</li>
+<li>函数<code>main</code>为主函数，一个项目里只有一个。</li>
+</ul>
+
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3>
+
+<p>变量以<code>var</code>关键字定义，类型声明放在后面，可以赋初始值。</p>
+
+<pre class="line-numbers"><code class="language-go">var a int
+var b bool
+var c, d float64 = 2.5, 5.0
+</code></pre>
+
+<p>也可以这样定义：</p>
+
+<pre class="line-numbers"><code class="language-go">func main() {
+    k := 3
+    c, d, e := false, 1, &quot;hello&quot;
+}
+</code></pre>
+
+<p>这个时候变量的类型由右边给出的值来推断，但这种形式<code>:=</code><strong>只能在函数内部使用</strong>。</p>
+
+<h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3>
+
+<p>常量以<code>const</code>关键字定义，如：</p>
+
+<pre class="line-numbers"><code class="language-go">const Pi = 3.14
+</code></pre>
+
+<blockquote>
+<p>常量不能以<code>:=</code>定义。
+常量的类型是由右边的值来推断。</p>
+</blockquote>
+
+<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3>
+
+<p>Go语言的基本类型有：</p>
+
+<pre class="line-numbers"><code class="language-go">bool // 初始值 false
+
+string // 初始值为&quot;&quot;（空字符串）
+
+int  int8  int16  int32  int64
+uint uint8 uint16 uint32 uint64 uintptr
+
+byte // uint8 的别名
+
+rune // int32 的别名
+     // 代表一个Unicode码
+
+float32 float64
+
+complex64 complex128
+</code></pre>
+
+<blockquote>
+<p>数值类型的初始值是<code>0</code>。</p>
+</blockquote>
+
+<p><strong>类型转换</strong>，Go中没有隐型的类型转换，所有的转换都需要显式的转换，如：</p>
+
+<pre class="line-numbers"><code class="language-go">var i int= 42
+var f float64 = float64(i)
+</code></pre>
+
+<p>或者：</p>
+
+<pre class="line-numbers"><code class="language-go">i := 10
+f := float64(i)
+</code></pre>
+
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3>
+
+<p>Go可以这样注释：</p>
+
+<pre class="line-numbers"><code class="language-go">/*
+  这是注释
+*/
+</code></pre>
+
+<p>也可以这样：</p>
+
+<pre class="line-numbers"><code class="language-go">// 这是注释
+</code></pre>
+
+<p>好了，这一章就这样了，先学个基础。</p>
+
+                        </div>
+                                                <footer class="post-footer">
+                            <div class="post-tags">
+	<a href="../../../../content/tag/go/index.html">go</a>
+</div>
+                            <nav class="post-nav" id="nav">
+                            </nav>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </main>
+        <script language="javascript">
+            var page_url="content/2015/02/14/go-study-part1.html";
+			var rootpath="../../../../";
+        </script>
+        <script type="text/javascript" src="../../../../content/data.js"></script>
+        <script type="text/javascript" src="../../../../res/js/nav.js"></script>
+
+        <footer id="footer" class="footer">
+            <div class="social-links">
+                <a href="mailto:wolf.pan@qq.com" class="iconfont icon-email" title="email"></a>
+                <a href="https://github.com/leitwolf" class="iconfont icon-github" title="github" target="_blank"></a>
+            </div>
+            <div class="copyright">
+                <span class="power-by">Powered by <a class="hexo-link" href="https://github.com/leitwolf/cwiki" target="_blank">cwiki</a></span>
+                <span class="theme-info">Theme - <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank">Even</a></span>
+                <span class="copyright-year">&copy;2015 - 2016
+                    <span class="heart"><i class="iconfont icon-heart"></i></span>
+                    <span class="author">Lonewolf</span>
+                </span>
+            </div>
+        </footer>
+
+        <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../res/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../../res/js/even.js"></script>
+</body>
+</html>

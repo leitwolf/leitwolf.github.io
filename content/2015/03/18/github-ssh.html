@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="description" content="使用ssh方式上传到github" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="../../../../res/css/style.css" />
+    <!-- highlight start -->
+    <link rel="stylesheet" type="text/css" href="../../../../res/prismjs/prism.css" />
+    <script type="text/javascript" src="../../../../res/prismjs/prism.js"></script>
+    <!-- highlight end -->
+    <title>使用ssh方式上传到github - lonewolf的博客</title>
+</head>
+
+<body class="language-markup">
+    <div class="container">
+        <header id="header" class="header">
+            <div class="logo-wrapper">
+                <a href="../../../../" class="logo">Lonewolf</a>
+            </div>
+            <nav class="site-nav">
+                <ul id="menu" class="menu">
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../index.html">首页</a>
+                    </li>
+                    <li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/archive/index.html">归档</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/category/index.html">分类</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/tag/index.html">标签</a>
+                    </li>
+<li class="menu-item">
+                        <a class="menu-item-link" href="../../../../content/about/index.html">关于</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-navbar">
+                <div class="mobile-header">
+                    <div class="mobile-header-logo">
+                        <a href="../../../../" class="logo">Lonewolf</a>
+                    </div>
+                    <div class="mobile-header-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <nav class="mobile-menu">
+                    <a class="mobile-menu-item" href="../../../../index.html">首页</a>
+                    <a class="mobile-menu-item" href="../../../../content/archive/index.html">归档</a>
+<a class="mobile-menu-item" href="../../../../content/category/index.html">分类</a>
+<a class="mobile-menu-item" href="../../../../content/tag/index.html">标签</a>
+<a class="mobile-menu-item" href="../../../../content/about/index.html">关于</a>
+                </nav>
+            </div>
+        </header>
+        <main id="main" class="main">
+            <div class="content-wrapper">
+                <div id="content" class="content">
+                    <article class="post">
+                                                <header class="post-header">
+                            <h1 class="post-title">使用ssh方式上传到github</h1>
+                            <div class="post-meta">
+                                <span class="post-time">2015-03-18 11:19</span>
+                            </div>
+                        </header>
+                        <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <ol class="toc">
+			<ol class="toc-child">
+<li class="toc-item toc-level-1"><a class="toc-link" href="#在本地生成ssh-key"><span class="toc-text">在本地生成ssh-key</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#在github上设置"><span class="toc-text">在github上设置</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#sourcetree"><span class="toc-text">sourcetree</span></a>
+</li>
+</ol>
+        </ol>
+    </div>
+</div>
+                        <div class="post-content">
+                            <p>原链接地址：<a href="http://lonewolf.me/content/2015/03/18/github-ssh.html">http://lonewolf.me/content/2015/03/18/github-ssh.html</a><br />
+原创博客，转载请注明。</p>
+
+<hr />
+
+<p>昨天上传东西到github的时候，又发生错误了，之前也遇到过：</p>
+
+<pre class="line-numbers"><code class="language-shell">unable to access 'https://github.com/xxx': Empty reply from server
+</code></pre>
+
+<p>网上有人说这是被<strong>“墙”</strong>的原因，可以用ssh的方式上传，于是试了一下，今天上传果然可以。</p>
+
+<p>github官方也有详细的介绍
+<a href="https://help.github.com/articles/generating-ssh-keys/">https://help.github.com/articles/generating-ssh-keys/</a>
+以下以mac为例。
+<!--more--></p>
+
+<h1 id="在本地生成ssh-key"><a href="#在本地生成ssh-key" class="headerlink" title="在本地生成ssh-key"></a>在本地生成ssh-key</h1>
+
+<ul>
+<li>打开终端，输入以下文字：</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-shell">ssh-keygen -t rsa
+</code></pre>
+
+<ul>
+<li>接着会提示你，这个时候只要回车即可：</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-shell">Enter file in which to save the key (/Users/you/.ssh/id_rsa):
+</code></pre>
+
+<ul>
+<li>之后是输入两次密码，密码要<strong>4位数</strong>以上的：</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-shell">Enter passphrase (empty for no passphrase):
+Enter same passphrase again: 
+</code></pre>
+
+<p>这个时候就有两个文件<code>~/.ssh/id_rsa</code>和<code>~/.ssh/id_rsa.pub</code>生成了。</p>
+
+<ul>
+<li>添加ssh-key</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-shell">ssh-add ~/.ssh/id_rsa
+</code></pre>
+
+<ul>
+<li>测试一下是否成功。</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-shell">ssh -T git@github.com
+</code></pre>
+
+<p>出现<code>successfully authenticated</code>即是成功。</p>
+
+<ul>
+<li>复制ssh-key进剪贴板</li>
+</ul>
+
+<pre class="line-numbers"><code class="language-shell">pbcopy &lt; ~/.ssh/id_rsa.pub
+</code></pre>
+
+<h1 id="在github上设置"><a href="#在github上设置" class="headerlink" title="在github上设置"></a>在github上设置</h1>
+
+<ul>
+<li>进github的网站
+<a href="https://github.com/settings/ssh">https://github.com/settings/ssh</a></li>
+<li>添加ssh key
+<img src="https://help.github.com/assets/images/help/settings/ssh-add-ssh-key.png" alt="ssh-add-ssh-key" /></li>
+</ul>
+
+<p>在以下的界面中，title可以随便填写，在key一栏粘贴即可。</p>
+
+<p><img src="https://help.github.com/assets/images/help/settings/ssh-key-paste.png" alt="ssh-key-paste" /></p>
+
+<p>最后点击按钮。</p>
+
+<p><img src="https://help.github.com/assets/images/help/settings/ssh-add-key.png" alt="ssh-add-key" /></p>
+
+<h1 id="sourcetree"><a href="#sourcetree" class="headerlink" title="sourcetree"></a>sourcetree</h1>
+
+<p>如果用sourcetree的话，就要把远程库<code>https://github.com/～.git</code>改成<code>git@github.com:～.git</code></p>
+
+<p>最后重启一下机子。</p>
+
+                        </div>
+                                                <footer class="post-footer">
+                            <div class="post-tags">
+	<a href="../../../../content/tag/github/index.html">github</a>
+	<a href="../../../../content/tag/ssh github/index.html">ssh github</a>
+</div>
+                            <nav class="post-nav" id="nav">
+                            </nav>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </main>
+        <script language="javascript">
+            var page_url="content/2015/03/18/github-ssh.html";
+			var rootpath="../../../../";
+        </script>
+        <script type="text/javascript" src="../../../../content/data.js"></script>
+        <script type="text/javascript" src="../../../../res/js/nav.js"></script>
+
+        <footer id="footer" class="footer">
+            <div class="social-links">
+                <a href="mailto:wolf.pan@qq.com" class="iconfont icon-email" title="email"></a>
+                <a href="https://github.com/leitwolf" class="iconfont icon-github" title="github" target="_blank"></a>
+            </div>
+            <div class="copyright">
+                <span class="power-by">Powered by <a class="hexo-link" href="https://github.com/leitwolf/cwiki" target="_blank">cwiki</a></span>
+                <span class="theme-info">Theme - <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even" target="_blank">Even</a></span>
+                <span class="copyright-year">&copy;2015 - 2016
+                    <span class="heart"><i class="iconfont icon-heart"></i></span>
+                    <span class="author">Lonewolf</span>
+                </span>
+            </div>
+        </footer>
+
+        <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../../res/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../../res/js/even.js"></script>
+</body>
+</html>
