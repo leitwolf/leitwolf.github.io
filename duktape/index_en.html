@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="wf-nojavascript">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<link href="favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="touch_icon_152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+<link href="touch_icon_144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+<link href="touch_icon_120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+<link href="touch_icon_114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+<link href="touch_icon_72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+<link href="touch_icon_60x60.png" rel="apple-touch-icon" sizes="60x60"/>
+<link href="touch_icon_57x57.png" rel="apple-touch-icon" sizes="57x57"/>
+<link href="touch_icon_57x57.png" rel="apple-touch-icon"/>
+<link href="startup_image_320x480.png" rel="apple-touch-startup-image"/>
+<script type="text/javascript">
+// allows non-javascript browsers to render with fallback fonts
+document.getElementsByTagName("html")[0].className = "";
+
+/*
+  WebFont.load({
+    google: {
+      families: ['Open Sans', 'Droid Sans Mono']
+    }
+  });
+*/
+// link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'
+// link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'
+
+WebFontConfig = {
+    google: {
+      families: ['Open Sans', 'Droid Sans Mono']
+    }
+};
+
+// http://kevindew.me/post/47052453532/a-fallback-for-when-google-web-font-loader-fails
+(function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://ajax.googleapis.com/ajax/libs/webfont/1.4.2/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+    setTimeout(function() {
+        if (!("WebFont" in window)) {
+            document.getElementsByTagName("html")[0].className += " wf-fail";
+        }
+    }, 1000);
+})();
+</script>
+<!-- combined stylesheet -->
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Duktape</title>
+</head>
+<body>
+<div id="site-top">
+<div id="site-top-logo">
+<strong id="logo">((o) Duktape</strong>
+</div> <!-- site-top-logo -->
+<div id="site-top-nav">
+<ul>
+<li class="selected"><a href="index.html">Home</a></li>
+<li><a href="download.html">Download</a></li>
+<li><a href="api.html">API</a></li>
+<li><a href="guide.html">Guide</a></li>
+<li><a href="http://wiki.duktape.org/">Wiki</a></li>
+<li><a href="dukweb.html">REPL</a></li>
+</ul>
+</div> <!-- site-top-nav -->
+</div> <!-- site-top -->
+<div id="site-dummy-github" style="position:relative">
+<a href="https://github.com/svaarala/duktape"><img alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" style="position: absolute; top: 0; right: 0; border: 0;"/></a>
+</div>
+<div class="content" id="site-middle"><div id="front-blurp">
+<hr/><h1>Duktape</h1>
+<p>Duktape is an <b>embeddable Javascript</b> engine,
+with a focus on <b>portability</b> and compact <b>footprint</b>.</p>
+<p>Duktape is easy to integrate into a C/C++ project: add <code>duktape.c</code>,
+<code>duktape.h</code>, and <code>duk_config.h</code> to your build, and use the
+Duktape API to call Ecmascript functions from C code and vice versa.</p>
+<script>
+// <![CDATA[
++function duktapeTest() {
+    var _isDuktape = false;
+    try {
+        noSuchVariable.foo = 123;
+    } catch (e) {
+        if (typeof e.stack === 'string' && (e.stack.indexOf('duk_js_var') >= 0 || e.stack.indexOf('dukky') >= 0)) {
+            _isDuktape = true;
+        }
+    }
+    try {
+        var _isNetSurf = (typeof navigator === 'object' &&
+                          typeof navigator.userAgent === 'string' &&
+                          navigator.userAgent.indexOf('NetSurf') >= 0);
+        if (_isNetSurf && _isDuktape) {
+            document.write('<p><b>Congratulations, you\'re using Duktape on NetSurf!</b></p>');
+        }
+    } catch (e) {
+        //alert(e);
+    }
+}();
+// ]]>
+</script>
+<hr/><h1>Main features</h1>
+<ul>
+<li>Embeddable, portable, compact:
+    can run on platforms with 192kB flash and 64kB system RAM</li>
+<li><a href="http://www.ecma-international.org/ecma-262/5.1/">Ecmascript E5/E5.1</a>,
+    with some semantics updated from ES2015+</li>
+<li>Partial support for
+    <a href="http://www.ecma-international.org/ecma-262/6.0/index.html">Ecmascript 2015 (E6)</a> and
+    <a href="http://www.ecma-international.org/ecma-262/7.0/index.html">Ecmascript 2016 (E7)</a>, see
+    <a href="http://wiki.duktape.org/PostEs5Features.html">Post-ES5 feature status</a>
+</li>
+<li>ES2015 <a href="https://www.khronos.org/registry/typedarray/specs/latest/">TypedArray</a>
+    and <a href="https://nodejs.org/docs/v6.9.1/api/buffer.html">Node.js Buffer</a> bindings</li>
+<li><a href="https://encoding.spec.whatwg.org/#api">Encoding API</a> bindings based on the WHATWG Encoding Living Standard</li>
+<li>Built-in debugger</li>
+<li>Built-in regular expression engine</li>
+<li>Built-in Unicode support</li>
+<li>Minimal, retargetable platform dependencies</li>
+<li>Combined reference counting and mark-and-sweep garbage collection
+    with finalization</li>
+<li>Coroutines</li>
+<li>Property virtualization using a subset of Ecmascript E6 Proxy object</li>
+<li>Bytecode dump/load for caching compiled functions</li>
+<li>Distributable includes an optional logging framework, CommonJS-based module
+    loading implementations, etc</li>
+<li>Liberal license (MIT)</li>
+</ul>
+<hr/><h1>Code and RAM footprint</h1>
+<table>
+<tr><td> </td><td>x86 default</td><td>x86 lowmem</td><td>x86 full lowmem</td></tr>
+<tr><td>Code</td><td>170kB</td><td>150kB</td><td>200kB</td></tr>
+<tr><td>Startup RAM</td><td>68kB</td><td>35kB</td><td>2.3kB</td></tr>
+</table>
+<p>See <a href="https://github.com/svaarala/duktape/blob/master/doc/low-memory.rst#optimizing-code-footprint">GCC options</a>
+for minimizing code footprint.  Full <a href="https://github.com/svaarala/duktape/blob/master/doc/low-memory.rst">lowmem</a>
+uses "pointer compression" and ROM-based strings/objects.  ROM-based strings/objects can
+also be used without other low memory options.</p>
+<hr/><h1>Current status</h1>
+<ul>
+<li>Stable</li>
+</ul>
+<hr/><h1>Support</h1>
+<ul>
+<li>Duktape Wiki: <a href="http://wiki.duktape.org">wiki.duktape.org</a></li>
+<li>User community Q&amp;A: Stack Overflow <a href="http://stackoverflow.com/questions/tagged/duktape">duktape</a> tag</li>
+<li>Bugs and feature requests: <a href="https://github.com/svaarala/duktape/issues">GitHub issues</a></li>
+<li>General discussion: IRC <code>#duktape</code> on <code>chat.freenode.net</code> (<a href="https://webchat.freenode.net/">webchat</a>)</li>
+</ul>
+<hr/><h1>Some projects using Duktape</h1>
+<p>See: <a href="http://wiki.duktape.org/ProjectsUsingDuktape.html">Projects using Duktape</a>.</p>
+<p>If you're using Duktape in your project, send an e-mail or open a GitHub
+issue to be added to the list.</p>
+<hr/><h1>Similar engines</h1>
+<p>There are multiple Javascript engines targeting similar use cases as Duktape, at least:</p>
+<ul>
+<li><a href="https://github.com/espruino/Espruino">Espruino</a> (MPL v2.0)</li>
+<li><a href="http://samsung.github.io/jerryscript/">JerryScript</a> (Apache License v2.0)</li>
+<li><a href="http://mujs.com/">MuJS</a> (Affero GPL)</li>
+<li><a href="https://code.google.com/p/quad-wheel/">quad-wheel</a> (MIT License)</li>
+<li><a href="https://github.com/gfwilliams/tiny-js">tiny-js</a> (MIT license)</li>
+<li><a href="https://github.com/cesanta/v7">v7</a> (GPL v2.0)</li>
+</ul>
+<p>Also see <a href="https://en.wikipedia.org/wiki/List_of_ECMAScript_engines">List of ECMAScript engines</a>.</p>
+</div><!-- front-blurp --><div id="front-steps">
+<hr/><h1><span class="step">1</span> Add to build</h1>
+<p>(See <a href="guide.html#gettingstarted">Getting started</a> for a more
+detailed introduction.)</p>
+<p>Add Duktape C source and header to your build.  Any build system can
+be used.  The distributable contains an example Makefile for reference.
+In the simplest case:</p>
+<pre>
+$ gcc -std=c99 -otest test.c duktape.c -lm
+$ ./test
+<span class="index-shell-output">1+2=3</span>
+</pre>
+<p>To <a href="http://wiki.duktape.org/Configuring.html">customize Duktape configuration</a>,
+here to disable Ecmascript 6 <code>Proxy</code> object support:</p>
+<pre>
+$ python2 duktape-2.0.0/tools/configure.py --output-directory src-duktape \
+      -UDUK_USE_ES6_PROXY
+$ ls src-duktape/
+<span class="index-shell-output">duk_config.h  duk_source_meta.json  duktape.c  duktape.h</span>
+$ gcc -std=c99 -otest -Isrc-duktape \
+      test.c src-duktape/duktape.c -lm
+$ ./test
+<span class="index-shell-output">1+2=3</span>
+</pre>
+<hr/><h1><span class="step">2</span> Initialize a context</h1>
+<p>Initialize and use Duktape somewhere in your program:</p>
+<pre class="c-code"><span class="comment">/* test.c */</span>
+<span class="preproc">#include</span><span class="normal"> </span><span class="string">&lt;stdio.h&gt;</span>
+<span class="preproc">#include</span><span class="normal"> </span><span class="string">"duktape.h"</span>
+
+<span class="type">int</span><span class="normal"> </span><span class="function">main</span><span class="symbol">(</span><span class="type">int</span><span class="normal"> argc</span><span class="symbol">,</span><span class="normal"> </span><span class="type">char</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">argv</span><span class="symbol">[])</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">  </span><span class="usertype">duk_context</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">ctx </span><span class="symbol">=</span><span class="normal"> </span><span class="function">duk_create_heap_default</span><span class="symbol">();</span>
+<span class="normal">  </span><span class="function">duk_eval_string</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"1+2"</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="function">printf</span><span class="symbol">(</span><span class="string">"1+2=%d</span><span class="specialchar">\n</span><span class="string">"</span><span class="symbol">,</span><span class="normal"> </span><span class="symbol">(</span><span class="type">int</span><span class="symbol">)</span><span class="normal"> </span><span class="function">duk_get_int</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="symbol">-</span><span class="number">1</span><span class="symbol">));</span>
+<span class="normal">  </span><span class="function">duk_destroy_heap</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="keyword">return</span><span class="normal"> </span><span class="number">0</span><span class="symbol">;</span>
+<span class="cbracket">}</span>
+</pre>
+<hr/><h1><span class="step">3</span> Add C function bindings</h1>
+<p>To call a C function from Ecmascript code, first declare your
+C functions:</p>
+<pre class="c-code"><span class="comment">/* Being an embeddable engine, Duktape doesn't provide I/O</span>
+<span class="comment"> * bindings by default.  Here's a simple one argument print()</span>
+<span class="comment"> * function.</span>
+<span class="comment"> */</span>
+<span class="keyword">static</span><span class="normal"> </span><span class="usertype">duk_ret_t</span><span class="normal"> </span><span class="function">native_print</span><span class="symbol">(</span><span class="usertype">duk_context</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">ctx</span><span class="symbol">)</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">  </span><span class="function">printf</span><span class="symbol">(</span><span class="string">"%s</span><span class="specialchar">\n</span><span class="string">"</span><span class="symbol">,</span><span class="normal"> </span><span class="function">duk_to_string</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="number">0</span><span class="symbol">));</span>
+<span class="normal">  </span><span class="keyword">return</span><span class="normal"> </span><span class="number">0</span><span class="symbol">;</span><span class="normal">  </span><span class="comment">/* no return value (= undefined) */</span>
+<span class="cbracket">}</span>
+
+<span class="comment">/* Adder: add argument values. */</span>
+<span class="keyword">static</span><span class="normal"> </span><span class="usertype">duk_ret_t</span><span class="normal"> </span><span class="function">native_adder</span><span class="symbol">(</span><span class="usertype">duk_context</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">ctx</span><span class="symbol">)</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">  </span><span class="type">int</span><span class="normal"> i</span><span class="symbol">;</span>
+<span class="normal">  </span><span class="type">int</span><span class="normal"> n </span><span class="symbol">=</span><span class="normal"> </span><span class="function">duk_get_top</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">);</span><span class="normal">  </span><span class="comment">/* #args */</span>
+<span class="normal">  </span><span class="type">double</span><span class="normal"> res </span><span class="symbol">=</span><span class="normal"> </span><span class="number">0.0</span><span class="symbol">;</span>
+
+<span class="normal">  </span><span class="keyword">for</span><span class="normal"> </span><span class="symbol">(</span><span class="normal">i </span><span class="symbol">=</span><span class="normal"> </span><span class="number">0</span><span class="symbol">;</span><span class="normal"> i </span><span class="symbol">&lt;</span><span class="normal"> n</span><span class="symbol">;</span><span class="normal"> i</span><span class="symbol">++)</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">    res </span><span class="symbol">+=</span><span class="normal"> </span><span class="function">duk_to_number</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> i</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="cbracket">}</span>
+
+<span class="normal">  </span><span class="function">duk_push_number</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> res</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="keyword">return</span><span class="normal"> </span><span class="number">1</span><span class="symbol">;</span><span class="normal">  </span><span class="comment">/* one return value */</span>
+<span class="cbracket">}</span>
+</pre>
+<p>Register your functions e.g. into the global object:</p>
+<pre class="c-code"><span class="function">duk_push_c_function</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> native_print</span><span class="symbol">,</span><span class="normal"> </span><span class="number">1</span><span class="normal"> </span><span class="comment">/*nargs*/</span><span class="symbol">);</span>
+<span class="function">duk_put_global_string</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"print"</span><span class="symbol">);</span>
+<span class="function">duk_push_c_function</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> native_adder</span><span class="symbol">,</span><span class="normal"> DUK_VARARGS</span><span class="symbol">);</span>
+<span class="function">duk_put_global_string</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"adder"</span><span class="symbol">);</span>
+</pre>
+<p>You can then call your function from Ecmascript code:</p>
+<pre class="c-code"><span class="function">duk_eval_string_noresult</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"print('2+3=' + adder(2, 3));"</span><span class="symbol">);</span>
+</pre>
+</div><!-- front-steps --></div> <!-- site-middle -->
+<div id="site-bottom">
+<hr/>
+<p>Duktape is (C) by its <a href="https://github.com/svaarala/duktape/blob/master/AUTHORS.rst">authors</a>
+and licensed under the <a href="https://github.com/svaarala/duktape/blob/master/LICENSE.txt">MIT license</a>.</p>
+</div> <!-- site-bottom -->
+</body>
+</html>

@@ -68,6 +68,57 @@
                 <article class="post">
     <header class="post-header">
       <h1 class="post-title">
+          <a class="post-link" href="content/2017/01/04/duktape-intro.html">Duktape介绍及中文文档</a>
+      </h1>
+      <div class="post-meta">
+        <span class="post-time">
+          2017-01-04 14:34
+        </span>
+      </div>
+    </header>
+    <div class="post-content">
+        <p>原链接地址：<a href="http://lonewolf.me/content/2017/01/04/duktape-intro.html">http://lonewolf.me/content/2017/01/04/duktape-intro.html</a><br />
+原创博客，转载请注明。</p>
+
+<hr />
+
+<p><a href="http://www.duktape.org/">Duktape</a>是一个嵌入式Javascript引擎，专注于可移植性和低空间占用。</p>
+
+<p>Duktape易于集成到C/C++项目中：将duktape.c, duktape.h，和duk_config.h添加到您的构建项目中，并使用Duktape API实现C代码与Ecmascript函数的双向调用。</p>
+
+<h2 id="主要特性"><a href="#主要特性" class="headerlink" title="主要特性"></a>主要特性</h2>
+
+<ul>
+<li>可嵌入，可移植，低占用：可运行于只有192kB闪存空间(flash)以及64kB系统内存(RAM)的平台上<br /></li>
+<li>兼容 Ecmascript E5/E5.1 ，一些语义规范更新自 ES2015+</li>
+<li>部分支持 Ecmascript 2015 (E6) 和 Ecmascript 2016 (E7)，参见 Post-ES5 特性</li>
+<li>支持 ES2015 TypedArray 和 Node.js Buffer 绑定</li>
+<li>内置调试器</li>
+<li>内置正则表达式引擎</li>
+<li>内置Unicode支持</li>
+<li>最小限度的平台依赖</li>
+<li>整合了引用计数和标记-清除算法(mark-and-sweep)垃圾收集机制</li>
+<li>协程支持</li>
+<li>属性虚拟化中使用了Ecmascript E6 Proxy对象的一个子集</li>
+<li>以字节码转储(dump)/加载的方式来缓存已编译的函数</li>
+<li>发布版中包含一个日志框架和基于CommonJS的模块加载实现等</li>
+<li>采用 MIT 的自由许可证</li>
+</ul>
+
+<h2 id="当前状态"><a href="#当前状态" class="headerlink" title="当前状态"></a>当前状态</h2>
+
+<p>Duktape目前版本为2.0.0。</p>
+
+<p><a href="http://lonewolf.me/duktape/">Duktape中文文档</a>正在翻译中。</p>
+
+        <div class="read-more">
+            <a href="content/2017/01/04/duktape-intro.html" class="read-more-link">Read more..</a>
+        </div>
+    </div>
+  </article>
+<article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
           <a class="post-link" href="content/2016/12/26/new-blog-style.html">新博客</a>
       </h1>
       <div class="post-meta">
@@ -395,32 +446,6 @@ THIS_IS_A_CONSTANT = 1
 
         <div class="read-more">
             <a href="content/2015/03/17/honor3d-error.html" class="read-more-link">Read more..</a>
-        </div>
-    </div>
-  </article>
-<article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-          <a class="post-link" href="content/2015/03/14/migrate-to-hexo.html">博客引擎迁移到hexo</a>
-      </h1>
-      <div class="post-meta">
-        <span class="post-time">
-          2015-03-14 23:00
-        </span>
-      </div>
-    </header>
-    <div class="post-content">
-        <p>原链接地址：<a href="http://lonewolf.me/content/2015/03/14/migrate-to-hexo.html">http://lonewolf.me/content/2015/03/14/migrate-to-hexo.html</a><br />
-原创博客，转载请注明。</p>
-
-<hr />
-
-<p>之前使用的是jekyll，现在改到了hexo，也重新选择了新主题，顺便添加了多说评论系统。
-<img src="file/pic/migrate-to-hexo-1.jpg" alt="图片1" />
-<img src="file/pic/migrate-to-hexo-2.jpg" alt="图片1" /></p>
-
-        <div class="read-more">
-            <a href="content/2015/03/14/migrate-to-hexo.html" class="read-more-link">Read more..</a>
         </div>
     </div>
   </article>

@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html class="wf-nojavascript">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<link href="favicon.ico" rel="icon" type="image/x-icon"/>
+<link href="touch_icon_152x152.png" rel="apple-touch-icon" sizes="152x152"/>
+<link href="touch_icon_144x144.png" rel="apple-touch-icon" sizes="144x144"/>
+<link href="touch_icon_120x120.png" rel="apple-touch-icon" sizes="120x120"/>
+<link href="touch_icon_114x114.png" rel="apple-touch-icon" sizes="114x114"/>
+<link href="touch_icon_72x72.png" rel="apple-touch-icon" sizes="72x72"/>
+<link href="touch_icon_60x60.png" rel="apple-touch-icon" sizes="60x60"/>
+<link href="touch_icon_57x57.png" rel="apple-touch-icon" sizes="57x57"/>
+<link href="touch_icon_57x57.png" rel="apple-touch-icon"/>
+<link href="startup_image_320x480.png" rel="apple-touch-startup-image"/>
+<script type="text/javascript">
+// allows non-javascript browsers to render with fallback fonts
+document.getElementsByTagName("html")[0].className = "";
+
+/*
+  WebFont.load({
+    google: {
+      families: ['Open Sans', 'Droid Sans Mono']
+    }
+  });
+*/
+// link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'
+// link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'
+
+WebFontConfig = {
+    google: {
+      families: ['Open Sans', 'Droid Sans Mono']
+    }
+};
+
+// http://kevindew.me/post/47052453532/a-fallback-for-when-google-web-font-loader-fails
+(function() {
+    var wf = document.createElement('script');
+    wf.src = 'webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+    setTimeout(function() {
+        if (!("WebFont" in window)) {
+            document.getElementsByTagName("html")[0].className += " wf-fail";
+        }
+    }, 1000);
+})();
+</script>
+<!-- combined stylesheet -->
+<link href="style.css" rel="stylesheet" type="text/css"/>
+<title>Duktape 中文</title>
+</head>
+<body>
+<div id="site-top">
+<div id="site-top-logo">
+<strong id="logo">((o) Duktape</strong>
+</div> <!-- site-top-logo -->
+<div id="site-top-nav">
+<ul>
+<li class="selected"><a href="index.html">首页</a></li>
+<li><a href="http://www.duktape.org/download.html">下载</a></li>
+<li><a href="api.html">API</a></li>
+<li><a href="guide.html">编程指南</a></li>
+<li><a href="http://wiki.duktape.org/">Wiki</a></li>
+<li><a href="http://www.duktape.org/dukweb.html">REPL</a></li>
+</ul>
+</div> <!-- site-top-nav -->
+</div> <!-- site-top -->
+<div id="site-dummy-github" style="position:relative">
+<a href="https://github.com/svaarala/duktape"><img alt="Fork me on GitHub" src="forkme_right_gray_6d6d6d.png" style="position: absolute; top: 0; right: 0; border: 0;"/></a>
+</div>
+<div class="content" id="site-middle"><div id="front-blurp">
+<hr/><h1>Duktape</h1>
+<p>Duktape是一个<b>嵌入式Javascript</b>引擎，专注于<b>可移植性</b>和<b>低空间占用</b>。</p>
+<p>Duktape易于集成到C/C++项目中：将<code>duktape.c</code>,
+<code>duktape.h</code>，和<code>duk_config.h</code>添加到您的构建项目中，并使用Duktape API实现C代码与Ecmascript函数的双向调用。</p>
+<script>
+// <![CDATA[
++function duktapeTest() {
+    var _isDuktape = false;
+    try {
+        noSuchVariable.foo = 123;
+    } catch (e) {
+        if (typeof e.stack === 'string' && (e.stack.indexOf('duk_js_var') >= 0 || e.stack.indexOf('dukky') >= 0)) {
+            _isDuktape = true;
+        }
+    }
+    try {
+        var _isNetSurf = (typeof navigator === 'object' &&
+                          typeof navigator.userAgent === 'string' &&
+                          navigator.userAgent.indexOf('NetSurf') >= 0);
+        if (_isNetSurf && _isDuktape) {
+            document.write('<p><b>Congratulations, you\'re using Duktape on NetSurf!</b></p>');
+        }
+    } catch (e) {
+        //alert(e);
+    }
+}();
+// ]]>
+</script>
+<hr/><h1>主要特性</h1>
+<ul>
+<li>可嵌入，可移植，低占用：可运行于只有192kB闪存空间(flash)以及64kB系统内存(RAM)的平台上</li>
+<li>兼容 <a href="http://www.ecma-international.org/ecma-262/5.1/">Ecmascript E5/E5.1</a> ，一些语义规范更新自 ES2015+ </li>
+<li>部分支持
+    <a href="http://www.ecma-international.org/ecma-262/6.0/index.html">Ecmascript 2015 (E6)</a> 和
+    <a href="http://www.ecma-international.org/ecma-262/7.0/index.html">Ecmascript 2016 (E7)</a>，参见
+    <a href="http://wiki.duktape.org/PostEs5Features.html">Post-ES5 特性</a>
+</li>
+<li>支持 ES2015 <a href="https://www.khronos.org/registry/typedarray/specs/latest/">TypedArray</a> 和 <a href="https://nodejs.org/docs/v6.9.1/api/buffer.html">Node.js Buffer</a> 绑定 </li>
+<li>内置调试器</li>
+<li>内置正则表达式引擎</li>
+<li>内置Unicode支持</li>
+<li>最小限度的平台依赖</li>
+<li>整合了引用计数和标记-清除算法(mark-and-sweep)垃圾收集机制</li>
+<li>协程支持</li>
+<li>属性虚拟化中使用了Ecmascript E6 Proxy对象的一个子集</li>
+<li>以字节码转储(dump)/加载的方式来缓存已编译的函数</li>
+<li>发布版中包含一个日志框架和基于CommonJS的模块加载实现等</li>
+<li>采用 MIT 的自由许可证</li>
+</ul>
+<hr/><h1>代码空间和内存(RAM)占用</h1>
+<table>
+<tr><td> </td><td>x86 默认</td><td>x86 低端内存</td><td>x86 全低端内存</td></tr>
+<tr><td>代码占用空间</td><td>170kB</td><td>150kB</td><td>200kB</td></tr>
+<tr><td>启动内存</td><td>68kB</td><td>35kB</td><td>2.3kB</td></tr>
+</table>
+<p>请参阅 <a href="https://github.com/svaarala/duktape/blob/master/doc/low-memory.rst#optimizing-code-footprint">GCC选项</a> 以最小化代码占用空间。全 <a href="https://github.com/svaarala/duktape/blob/master/doc/low-memory.rst">低端内存</a> 使用了“指针压缩”和基于ROM的字符串/对象。基于ROM的字符串/对象也可以在其他非低端内存选项中使用。</p>
+<hr/><h1>当前状态</h1>
+<ul>
+<li>稳定</li>
+</ul>
+<hr/><h1>技术支持</h1>
+<ul>
+<li>Duktape Wiki: <a href="http://wiki.duktape.org">wiki.duktape.org</a></li>
+<li>用户问答社区：Stack Overflow 上的 <a href="http://stackoverflow.com/questions/tagged/duktape">duktape</a> 标签</li>
+<li>Bug和功能需求： <a href="https://github.com/svaarala/duktape/issues">GitHub issues</a></li>
+<li>综合讨论区: <code>chat.freenode.net</code> 上的 IRC 频道 <code>#duktape</code> (<a href="https://webchat.freenode.net/">webchat</a>)</li>
+</ul>
+<hr/><h1>一些使用Duktape的项目</h1>
+<p>参见: <a href="http://wiki.duktape.org/ProjectsUsingDuktape.html">使用Duktape的项目</a>.</p>
+<p>如果你的项目中使用了Duktape，可以发电子邮件通知我们或开一个GitHub issue来将它添加到列表中。</p>
+<hr/><h1>类似的引擎</h1>
+<p>有多个Javascript引擎与Duktape有类似的功能定位，它们至少包括以下几个：</p>
+<ul>
+<li><a href="https://github.com/espruino/Espruino">Espruino</a> (MPL v2.0)</li>
+<li><a href="http://samsung.github.io/jerryscript/">JerryScript</a> (Apache License v2.0)</li>
+<li><a href="http://mujs.com/">MuJS</a> (Affero GPL)</li>
+<li><a href="https://code.google.com/p/quad-wheel/">quad-wheel</a> (MIT License)</li>
+<li><a href="https://github.com/gfwilliams/tiny-js">tiny-js</a> (MIT license)</li>
+<li><a href="https://github.com/cesanta/v7">v7</a> (GPL v2.0)</li>
+</ul>
+<p>另请参见 <a href="https://en.wikipedia.org/wiki/List_of_ECMAScript_engines">ECMAScript引擎列表</a>。</p>
+</div><!-- front-blurp --><div id="front-steps">
+<hr/><h1><span class="step">1</span> 添加到构建</h1>
+<p>（有关更详细的介绍，请参阅 <a href="guide.html#gettingstarted">入门指南</a> 。）</p>
+<p>将Duktape C源代码和头文件添加到您的构建项目中。它可在任意构建系统中使用。发布的版本中已包含一个Makefile示例供参考。下面是最简单的例子：</p>
+<pre>
+$ gcc -std=c99 -otest test.c duktape.c -lm
+$ ./test
+<span class="index-shell-output">1+2=3</span>
+</pre>
+<p>要 <a href="http://wiki.duktape.org/Configuring.html">自定义 Duktape 配置信息</a> ,
+在这里禁用Ecmascript 6 <code>Proxy</code> 对象支持：</p>
+<pre>
+$ python2 duktape-2.0.0/tools/configure.py --output-directory src-duktape \
+      -UDUK_USE_ES6_PROXY
+$ ls src-duktape/
+<span class="index-shell-output">duk_config.h  duk_source_meta.json  duktape.c  duktape.h</span>
+$ gcc -std=c99 -otest -Isrc-duktape \
+      test.c src-duktape/duktape.c -lm
+$ ./test
+<span class="index-shell-output">1+2=3</span>
+</pre>
+<hr/><h1><span class="step">2</span> 初始化上下文context</h1>
+<p>在你程序中的任意位置初始化和使用Duktape：</p>
+<pre class="c-code"><span class="comment">/* test.c */</span>
+<span class="preproc">#include</span><span class="normal"> </span><span class="string">&lt;stdio.h&gt;</span>
+<span class="preproc">#include</span><span class="normal"> </span><span class="string">"duktape.h"</span>
+
+<span class="type">int</span><span class="normal"> </span><span class="function">main</span><span class="symbol">(</span><span class="type">int</span><span class="normal"> argc</span><span class="symbol">,</span><span class="normal"> </span><span class="type">char</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">argv</span><span class="symbol">[])</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">  </span><span class="usertype">duk_context</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">ctx </span><span class="symbol">=</span><span class="normal"> </span><span class="function">duk_create_heap_default</span><span class="symbol">();</span>
+<span class="normal">  </span><span class="function">duk_eval_string</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"1+2"</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="function">printf</span><span class="symbol">(</span><span class="string">"1+2=%d</span><span class="specialchar">\n</span><span class="string">"</span><span class="symbol">,</span><span class="normal"> </span><span class="symbol">(</span><span class="type">int</span><span class="symbol">)</span><span class="normal"> </span><span class="function">duk_get_int</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="symbol">-</span><span class="number">1</span><span class="symbol">));</span>
+<span class="normal">  </span><span class="function">duk_destroy_heap</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="keyword">return</span><span class="normal"> </span><span class="number">0</span><span class="symbol">;</span>
+<span class="cbracket">}</span>
+</pre>
+<hr/><h1><span class="step">3</span> 添加C函数绑定</h1>
+<p>要在Ecmascript代码中调用C函数，首先得声明C函数：</p>
+<pre class="c-code"><span class="comment">/* 作为一个嵌入式引擎，Duktape 默认不提供I/O绑定。</span>
+<span class="comment"> * 这里是简单的只有一个参数的 print() 函数。</span>
+<span class="comment"> */</span>
+<span class="keyword">static</span><span class="normal"> </span><span class="usertype">duk_ret_t</span><span class="normal"> </span><span class="function">native_print</span><span class="symbol">(</span><span class="usertype">duk_context</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">ctx</span><span class="symbol">)</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">  </span><span class="function">printf</span><span class="symbol">(</span><span class="string">"%s</span><span class="specialchar">\n</span><span class="string">"</span><span class="symbol">,</span><span class="normal"> </span><span class="function">duk_to_string</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="number">0</span><span class="symbol">));</span>
+<span class="normal">  </span><span class="keyword">return</span><span class="normal"> </span><span class="number">0</span><span class="symbol">;</span><span class="normal">  </span><span class="comment">/* no return value (= undefined) */</span>
+<span class="cbracket">}</span>
+
+<span class="comment">/* Adder: add argument values. */</span>
+<span class="keyword">static</span><span class="normal"> </span><span class="usertype">duk_ret_t</span><span class="normal"> </span><span class="function">native_adder</span><span class="symbol">(</span><span class="usertype">duk_context</span><span class="normal"> </span><span class="symbol">*</span><span class="normal">ctx</span><span class="symbol">)</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">  </span><span class="type">int</span><span class="normal"> i</span><span class="symbol">;</span>
+<span class="normal">  </span><span class="type">int</span><span class="normal"> n </span><span class="symbol">=</span><span class="normal"> </span><span class="function">duk_get_top</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">);</span><span class="normal">  </span><span class="comment">/* #args */</span>
+<span class="normal">  </span><span class="type">double</span><span class="normal"> res </span><span class="symbol">=</span><span class="normal"> </span><span class="number">0.0</span><span class="symbol">;</span>
+
+<span class="normal">  </span><span class="keyword">for</span><span class="normal"> </span><span class="symbol">(</span><span class="normal">i </span><span class="symbol">=</span><span class="normal"> </span><span class="number">0</span><span class="symbol">;</span><span class="normal"> i </span><span class="symbol">&lt;</span><span class="normal"> n</span><span class="symbol">;</span><span class="normal"> i</span><span class="symbol">++)</span><span class="normal"> </span><span class="cbracket">{</span>
+<span class="normal">    res </span><span class="symbol">+=</span><span class="normal"> </span><span class="function">duk_to_number</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> i</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="cbracket">}</span>
+
+<span class="normal">  </span><span class="function">duk_push_number</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> res</span><span class="symbol">);</span>
+<span class="normal">  </span><span class="keyword">return</span><span class="normal"> </span><span class="number">1</span><span class="symbol">;</span><span class="normal">  </span><span class="comment">/* one return value */</span>
+<span class="cbracket">}</span>
+</pre>
+<p>注册C函数到全局对象：</p>
+<pre class="c-code"><span class="function">duk_push_c_function</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> native_print</span><span class="symbol">,</span><span class="normal"> </span><span class="number">1</span><span class="normal"> </span><span class="comment">/*nargs*/</span><span class="symbol">);</span>
+<span class="function">duk_put_global_string</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"print"</span><span class="symbol">);</span>
+<span class="function">duk_push_c_function</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> native_adder</span><span class="symbol">,</span><span class="normal"> DUK_VARARGS</span><span class="symbol">);</span>
+<span class="function">duk_put_global_string</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"adder"</span><span class="symbol">);</span>
+</pre>
+<p>之后就可以在Ecmascript代码中调用C函数了：</p>
+<pre class="c-code"><span class="function">duk_eval_string_noresult</span><span class="symbol">(</span><span class="normal">ctx</span><span class="symbol">,</span><span class="normal"> </span><span class="string">"print('2+3=' + adder(2, 3));"</span><span class="symbol">);</span>
+</pre>
+</div><!-- front-steps --></div> <!-- site-middle -->
+<div id="site-bottom">
+<hr/>
+<p>Duktape is (C) by its <a href="https://github.com/svaarala/duktape/blob/master/AUTHORS.rst">authors</a>
+and licensed under the <a href="https://github.com/svaarala/duktape/blob/master/LICENSE.txt">MIT license</a>.</p>
+</div> <!-- site-bottom -->
+</body>
+</html>
