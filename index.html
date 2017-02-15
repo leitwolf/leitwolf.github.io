@@ -68,6 +68,46 @@
                 <article class="post">
     <header class="post-header">
       <h1 class="post-title">
+          <a class="post-link" href="content/2017/02/15/ajax-cross-domain.html">ajax跨域访问问题总结</a>
+      </h1>
+      <div class="post-meta">
+        <span class="post-time">
+          2017-02-15 21:15
+        </span>
+      </div>
+    </header>
+    <div class="post-content">
+        <p>原链接地址：<a href="http://lonewolf.me/content/2017/02/15/ajax-cross-domain.html">http://lonewolf.me/content/2017/02/15/ajax-cross-domain.html</a><br />
+原创博客，转载请注明。</p>
+
+<hr />
+
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1>
+
+<p>当用 ajax 在 a.com 中访问 b.com 时，将会出现 <code>MLHttpRequest cannot load...</code> 等错误提示，这就是跨域访问所带来的问题。</p>
+
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1>
+
+<p>Chrome中可使用插件 <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi">Allow-Control-Allow-Origin: *</a> 进行解决，它可在 <code>response header</code> 中加入 <code>Allow-Control-Allow-Origin: *</code> 信息。</p>
+
+<p>这个方法有个缺点，如果想访问时带上 cookie，那它将无效，具体见 <a href="https://github.com/vitvad/Access-Control-Allow-Origin/issues/34">https://github.com/vitvad/Access-Control-Allow-Origin/issues/34</a>。</p>
+
+<h1 id="解决方法2"><a href="#解决方法2" class="headerlink" title="解决方法2"></a>解决方法2</h1>
+
+<p>带上 cookie 的方法是： <code>jQuery.ajaxSetup({xhrFields:{withCredentials:true}})</code>。</p>
+
+<p>这一问题的解决方法就是使用另一个插件 <a href="https://chrome.google.com/webstore/detail/access-control-allow-cred/hmcjjmkppmkpobeokkhgkecjlaobjldi">Access-Control-Allow-Credentials: true</a>。</p>
+
+<p>它也有个缺点，每次启动chrome后都要重新启用才有效。。。</p>
+
+        <div class="read-more">
+            <a href="content/2017/02/15/ajax-cross-domain.html" class="read-more-link">Read more..</a>
+        </div>
+    </div>
+  </article>
+<article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
           <a class="post-link" href="content/2017/01/08/medoo-doc-cn.html">Medoo介绍及中文文档</a>
       </h1>
       <div class="post-meta">
@@ -407,39 +447,6 @@ THIS_IS_A_CONSTANT = 1
 
         <div class="read-more">
             <a href="content/2015/03/22/homebrew-apache-php-mysql.html" class="read-more-link">Read more..</a>
-        </div>
-    </div>
-  </article>
-<article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-          <a class="post-link" href="content/2015/03/18/github-ssh.html">使用ssh方式上传到github</a>
-      </h1>
-      <div class="post-meta">
-        <span class="post-time">
-          2015-03-18 11:19
-        </span>
-      </div>
-    </header>
-    <div class="post-content">
-        <p>原链接地址：<a href="http://lonewolf.me/content/2015/03/18/github-ssh.html">http://lonewolf.me/content/2015/03/18/github-ssh.html</a><br />
-原创博客，转载请注明。</p>
-
-<hr />
-
-<p>昨天上传东西到github的时候，又发生错误了，之前也遇到过：</p>
-
-<pre class="line-numbers"><code class="language-shell">unable to access 'https://github.com/xxx': Empty reply from server
-</code></pre>
-
-<p>网上有人说这是被<strong>“墙”</strong>的原因，可以用ssh的方式上传，于是试了一下，今天上传果然可以。</p>
-
-<p>github官方也有详细的介绍
-<a href="https://help.github.com/articles/generating-ssh-keys/">https://help.github.com/articles/generating-ssh-keys/</a>
-以下以mac为例。
-
-        <div class="read-more">
-            <a href="content/2015/03/18/github-ssh.html" class="read-more-link">Read more..</a>
         </div>
     </div>
   </article>

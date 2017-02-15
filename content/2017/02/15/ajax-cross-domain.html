@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta http-equiv="Cache-Control" content="no-transform" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <meta name="description" content="{title}" />
+    <meta name="description" content="ajax跨域访问问题总结" />
     <link rel="shortcut icon" type="image/x-icon" href="../../../../favicon.ico" />
     <link rel="stylesheet" type="text/css" href="../../../../res/css/style.css" />
     <!-- highlight start -->
     <link rel="stylesheet" type="text/css" href="../../../../res/prismjs/prism.css" />
     <script type="text/javascript" src="../../../../res/prismjs/prism.js"></script>
     <!-- highlight end -->
-    <title>归档 - lonewolf的博客</title>
+    <title>ajax跨域访问问题总结 - lonewolf的博客</title>
 </head>
 
 <body class="language-markup">
@@ -61,53 +61,73 @@
                 </nav>
             </div>
         </header>
-      <main id="main" class="main">
-        <div class="content-wrapper">
-          <div id="content" class="content">
-            <section id="archive" class="archive">
-                <div class="collection-title">
-            <h2 class="archive-year">2015</h2>
-          </div>
-<div class="archive-post">
-        <span class="archive-post-time">
-        02-14
-        </span>
-        <span class="archive-post-title">
-          <a href="../../../../content/2015/02/14/go-study-part1.html" class="archive-post-link">
-            Go学习笔记：基础一
-          </a>
-        </span>
-      </div>
-<div class="archive-post">
-        <span class="archive-post-time">
-        02-08
-        </span>
-        <span class="archive-post-title">
-          <a href="../../../../content/2015/02/08/winxin-jssdk-src.html" class="archive-post-link">
-            微信JSSDK接入问题记录及源码
-          </a>
-        </span>
-      </div>
-<div class="archive-post">
-        <span class="archive-post-time">
-        01-23
-        </span>
-        <span class="archive-post-title">
-          <a href="../../../../content/2015/01/23/Python-Lex-Yacc.html" class="archive-post-link">
-            【译】Python Lex Yacc手册
-          </a>
-        </span>
-      </div>
-            </section>
-            <nav class="pagination">
-<a class="prev" href="../../../../content/archive/index.html">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text">Prev</span>
-      </a>
-</nav
-          </div>
-        </div>
-      </main>
+        <main id="main" class="main">
+            <div class="content-wrapper">
+                <div id="content" class="content">
+                    <article class="post">
+                                                <header class="post-header">
+                            <h1 class="post-title">ajax跨域访问问题总结</h1>
+                            <div class="post-meta">
+                                <span class="post-time">2017-02-15 21:15</span>
+                            </div>
+                        </header>
+                        <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <ol class="toc">
+			<ol class="toc-child">
+<li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#解决方法"><span class="toc-text">解决方法</span></a>
+</li>
+<li class="toc-item toc-level-1"><a class="toc-link" href="#解决方法2"><span class="toc-text">解决方法2</span></a>
+</li>
+</ol>
+        </ol>
+    </div>
+</div>
+                        <div class="post-content">
+                            <p>原链接地址：<a href="http://lonewolf.me/content/2017/02/15/ajax-cross-domain.html">http://lonewolf.me/content/2017/02/15/ajax-cross-domain.html</a><br />
+原创博客，转载请注明。</p>
+
+<hr />
+
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1>
+
+<p>当用 ajax 在 a.com 中访问 b.com 时，将会出现 <code>MLHttpRequest cannot load...</code> 等错误提示，这就是跨域访问所带来的问题。</p>
+
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1>
+
+<p>Chrome中可使用插件 <a href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi">Allow-Control-Allow-Origin: *</a> 进行解决，它可在 <code>response header</code> 中加入 <code>Allow-Control-Allow-Origin: *</code> 信息。</p>
+
+<p>这个方法有个缺点，如果想访问时带上 cookie，那它将无效，具体见 <a href="https://github.com/vitvad/Access-Control-Allow-Origin/issues/34">https://github.com/vitvad/Access-Control-Allow-Origin/issues/34</a>。</p>
+
+<h1 id="解决方法2"><a href="#解决方法2" class="headerlink" title="解决方法2"></a>解决方法2</h1>
+
+<p>带上 cookie 的方法是： <code>jQuery.ajaxSetup({xhrFields:{withCredentials:true}})</code>。</p>
+
+<p>这一问题的解决方法就是使用另一个插件 <a href="https://chrome.google.com/webstore/detail/access-control-allow-cred/hmcjjmkppmkpobeokkhgkecjlaobjldi">Access-Control-Allow-Credentials: true</a>。</p>
+
+<p>它也有个缺点，每次启动chrome后都要重新启用才有效。。。</p>
+
+                        </div>
+                                                <footer class="post-footer">
+                            <div class="post-tags">
+	<a href="../../../../content/tag/ajax/index.html">ajax</a>
+</div>
+                            <nav class="post-nav" id="nav">
+                            </nav>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </main>
+        <script language="javascript">
+            var page_url="content/2017/02/15/ajax-cross-domain.html";
+			var rootpath="../../../../";
+        </script>
+        <script type="text/javascript" src="../../../../content/data.js"></script>
+        <script type="text/javascript" src="../../../../res/js/nav.js"></script>
 
         <footer id="footer" class="footer">
             <div class="social-links">
